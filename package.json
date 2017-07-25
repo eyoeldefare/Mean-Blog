@@ -1,0 +1,30 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "mean blog",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eyoeldefare/Mean-Blog.git"
+  },
+  "keywords": [
+    "MEAN",
+    "sample",
+    "blog",
+    "Angular",
+    "app"
+  ],
+  "author": "Eyoel Defare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eyoeldefare/Mean-Blog/issues"
+  },
+  "homepage": "https://github.com/eyoeldefare/Mean-Blog#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongoose": "^4.11.4"
+  }
+}
