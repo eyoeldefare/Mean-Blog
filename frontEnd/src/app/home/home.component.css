@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
+
+body{margin:0; padding: 0; color:black;font-family: 'Rajdhani', sans-serif;}
+header{
+	
+	height: 500px;
+	background: -webkit-linear-gradient(rgba(257, 130, 94,.9), rgba(257, 166, 94,1), rgba(257, 201, 94,.4)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(257, 130, 94,.9), rgba(257, 166, 94,1), rgba(257, 201, 94,.4)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(257, 130, 94,.9), rgba(257, 166, 94,1), rgba(257, 201, 94,.4)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(257, 130, 94,.9), rgba(257, 166, 94,1), rgba(257, 201, 94,.4));
+	opacity: .9;
+}
+header #headercontainer{
+	display: flex;
+	justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+header #square h1, h5{
+	margin: 100px 0 20px 0;
+	text-align: center;
+	font-size: 42px;
+	letter-spacing: .01em;
+	
+}
+header #square p{
+	text-align: center;
+	margin:6px 0 6px 0;
+    font-size: 20px;
+	padding-bottom: 13px; 
+    letter-spacing: .02em;
+
+}
+header #square #inputs{
+	display: flex;
+	justify-content:center;
+	margin: 50px 0 10px 0;
+
+	
+}
+header #square #inputs button{
+	margin: 7px;
+	padding: 10px 12px 10px 12px;
+    border: 1px solid black;
+	font-size: 16px;
+	background-color:burlywood;
+	border-style:groove;
+	cursor:pointer;	
+}
+header #square #inputs button a{
+	padding: 12px 11px;
+}
+header #square #inputs button:hover{
+	background-color: bisque;
+	
+}
+ 
+/*--------------------------main------------------------------*/
+main{
+	margin: 0;
+	background-color:#FFFFFF;
+}
+main #navitems ul{
+	margin: 0;
+	padding: 15px 0;
+	text-align: center;
+}
+main #navitems ul li{
+	display: inline-block;
+	list-style-type: none;
+	margin: 12px 12px 12px 12px;
+	text-align: center;
+	color: aqua;
+
+}
+
+main #navitems ul li a{
+	text-decoration: none;
+	color:#081d45;
+	font-weight: bold;
+	
+}
+main #navitems ul li a:hover{
+	color: #0d3073;
+}
+main #line{
+	border: thin solid grey;
+	margin: 5px auto;
+	width:90%;
+	border-style:dotted;
+}
+main #blogs{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	justify-content: space-around;
+}
+
+main #blogs .blogitem{
+	width: 32%;
+	margin: 3px;
+	height: 390px;
+	min-width: 250px;
+	max-width: 370px;
+	flex-grow: 1;
+    overflow: hidden;
+    background-color: #add6b2;
+
+
+
+
+
+}
+main #blogs .blogitem a{
+	text-decoration: none;
+	color:black;
+}
+main #blogs .blogitem img{
+	background-color: white;
+	width: 98%;
+	height: 54%;
+	margin: 3px;
+	
+
+	
+}
+.peopleanddate{
+	display: flex;
+	margin-left: 3px;
+}
+main #blogs .blogitem .peopleanddate h6{
+	margin: 15px 0;
+	font-size: 15px;
+}
+main #blogs .blogitem .peopleanddate p{
+	margin: 15px 10px;
+}
+main #blogs .blogitem h3{
+	margin:4px 3px;
+}
+main #blogs .blogitem article{
+	margin: 0 3px;
+}
+#blue{
+	width: 100%;
+	display: flex;
+	background: cadetblue;
+	opacity: .9;
+}
+#blue>hr{
+	border: 8px cadetblue;
+	border-radius: 100%;
+	border-style:double;
+	background-color:darkslategray;
+	margin: 30px 0 30px 35px;
+}
+#warning{
+	margin:2px auto;
+	background-color: lightblue;
+	opacity: .93;
+	border-radius: 6px;
+	text-align: center;
+	color: #1e4255;
+	width:90%;
+	padding:10px;
+}
+main .log{
+	background-color:cadetblue;
+	flex: 1;
+	min-height: 260px;
+    height: 400px;
+    align-items: center;
+}
+main .log h2{
+	padding-top: 30px;
+	margin: 10px;
+	font-size: 40px;
+	text-align: center;
+}
+main .log p{
+	margin:10px 15px 15px 10px;
+	text-align: center;
+	font-size: 17px;
+}
+main .log div{
+	display: flex;
+	justify-content: center;
+}
+main .log div input{
+	margin:4px;
+	padding: 9px;
+	background-color:azure;
+	border-color: cadetblue;
+	border-style:groove;
+	
+}
+main .log a{
+	color: black;
+	text-decoration: none;
+}
+/*--------------------footer----------------*/
+footer {
+    background-color:#add6b2;
+}
+footer #first1{
+    height: 70px;
+    background-color: #8bdda3;
+}
+footer #first1 h2{
+	margin: 0;
+	padding: 25px 0 0 60px;
+}
+footer #second{
+	display: flex;
+	justify-content: space-between;
+}
+#second .one{
+   flex-basis: 25%;
+
+}
+#second .one h4{
+	text-align: center;
+	padding: 20px;
+	font-size: 15px;
+}
+#second .one ul{
+    margin: 0;
+    padding: 0;
+	text-align: center;
+    list-style-type: none;
+}
+#second .one ul li{
+    padding: 10px 0 0 0 ;
+	margin: 5px 0 0 0;
+	font-size: 14px;
+}
+footer p{
+	margin: 40px auto 0 auto;
+	text-align: center;
+}
+
+
+/*-------media-------*/
+@media screen and (max-width: 700px){
+	main .log div{
+		flex-direction: column;
+	}
+	footer #second{
+		flex-direction: column;
+	}
+	.second .one h4{
+		padding: 10px 0 0 0;
+		font-size: 17px
+		
+	}
+	#second .one ul li{
+		margin: 0;
+		padding: 7px 0 0 0;
+	}
+	footer #first1 h2{
+		text-align: center;
+		padding-right: 35px;
+	}
+	#three{
+		display: none;
+	}
+
+	#bar{
+		display: block;
+		display: flex;
+		margin-bottom: 10px;
+	}
+	header{
+		height: auto;
+	}
+	header #square h1, h5{
+		font-size: 23px;
+		margin: 60px 0 0 0;
+	}
+	
+
+}
+@media screen and (max-width: 900px){
+	#blue{
+		flex-direction: column;
+	}
+}
