@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/eyoeldefare/Mean-Blog#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "express": "^4.15.3",
     "mongoose": "^4.11.4"
   }

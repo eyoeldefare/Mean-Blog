@@ -6,7 +6,7 @@
 .top {
   height: 80px;
   width: 30%;
-  background-color: #e2c991;
+  background-color: #e04e35;
   min-width: 317px;
   margin: auto;
   align-items: center;
@@ -33,7 +33,7 @@ form {
   height: 440px;
   width: 30%;
   min-width: 317px;
-  background-color: aquamarine;
+  background-color:#edd195;
   margin: auto auto 20px auto;
   align-items: center;
 }

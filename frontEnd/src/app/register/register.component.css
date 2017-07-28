@@ -5,20 +5,15 @@
 
 .top {
   height: 80px;
-  width: 35%;
-  background-color: #e2c991;
+  width: 45%;
+  background-color: #e04e35;
   min-width: 317px;
+  color: white;
   margin: auto;
   align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 30px;
-}
-
-img {
-  height: 130px;
-  width: 130px;
-  margin-bottom: 5px;
 }
 
 form {
@@ -30,24 +25,26 @@ form {
 }
 
 .bottom {
-  width: 35%;
+  width: 45%;
   min-width: 317px;
-  background-color: aquamarine;
+  background-color: #edd195;
   margin: auto auto 20px auto;
   align-items: center;
-}  
-
-a{
-    font-size:15px;
 }
 
+a {
+  font-size: 15px;
+}
+ul{
+  color:#f44b42;
+}
 input {
   width: 100%;
   margin-bottom: 10px;
   height: 37px;
   border-radius: 5px;
-  text-indent: 6px;
   border: 1px solid chocolate;
+  text-indent: 1px;
 }
 
 button {
@@ -55,17 +52,7 @@ button {
   border-radius: 5px;
   background-color: #f44b42;
   border: 1px solid #f44b42;
-  color:white;
-}
-
-.image {
-  width: 128px;
-  align-items: center;
-  margin: auto;
-  background-color: #131d2d;
-  border-radius: 50%;
-  opacity: .8;
-
+  color: white;
 }
 
 .signup {
@@ -74,8 +61,8 @@ button {
   text-align: center;
 }
 
-@media screen and (max-width:500px){
-    .empty{
-        height: 20px;
-    }
+@media screen and (max-width:500px) {
+  .empty {
+    height: 20px;
+  }
 }

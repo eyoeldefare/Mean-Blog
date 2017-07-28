@@ -7,7 +7,7 @@
   </button>
 
   <!--title-->
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand">Navbar</a>
 
   <!--lists-->
   <div class="collapse navbar-collapse" id="navbarToggler">
@@ -23,7 +23,8 @@
 
     </ul>
     <!--search-->
-    <form class="form-inline my-2 my-lg-0">
+    <form [formGroup] = '' class="form-inline my-2 my-lg-0">
+      
       <input id = "searchInput" class="form-control mr-sm-2" type="text" placeholder="search...">
       <button id = 'searchButton'class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -33,11 +34,11 @@
             Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i>
+        <a class="nav-link" ><i class="fa fa-facebook-square" aria-hidden="true"></i>
 </a>
 
       </li>
-      <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i>
+      <li class="nav-item"><a class="nav-link"><i class="fa fa-twitter-square" aria-hidden="true"></i>
 </a></li>
     </ul>
   </div>
