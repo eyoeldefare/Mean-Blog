@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
+import {AuthenticateService} from './service/authenticate.service'
 
 @NgModule({
   declarations: [
@@ -27,9 +28,10 @@ import { RecentComponent } from './recent/recent.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpModule
     
   ],
-  providers: [],
+  providers: [AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

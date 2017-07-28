@@ -6,7 +6,7 @@
 .top {
   height: 80px;
   width: 45%;
-  background-color: #e04e35;
+  background-color: #466368;
   min-width: 317px;
   color: white;
   margin: auto;
@@ -21,7 +21,7 @@ form {
 }
 
 .empty {
-  height: 60px;
+  height: 57px;
 }
 
 .bottom {
@@ -30,6 +30,7 @@ form {
   background-color: #edd195;
   margin: auto auto 20px auto;
   align-items: center;
+  border: 2px solid #466368;
 }
 
 a {
@@ -43,15 +44,15 @@ input {
   margin-bottom: 10px;
   height: 37px;
   border-radius: 5px;
-  border: 1px solid chocolate;
+  border: 1px solid #466368;
   text-indent: 1px;
 }
 
 button {
   height: 37px;
   border-radius: 5px;
-  background-color: #f44b42;
-  border: 1px solid #f44b42;
+  background-color: #466368;
+  border: 1px solid #466368;
   color: white;
 }
 

@@ -254,6 +254,9 @@ footer p{
 		font-size: 17px
 		
 	}
+	header #square p{
+		font-size: 17px;
+	}
 	#second .one ul li{
 		margin: 0;
 		padding: 7px 0 0 0;
@@ -275,7 +278,7 @@ footer p{
 		height: auto;
 	}
 	header #square h1, h5{
-		font-size: 23px;
+		font-size: 35px;
 		margin: 60px 0 0 0;
 	}
 	

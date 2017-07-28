@@ -11,6 +11,7 @@
   margin: auto;
   align-items: center;
   display: flex;
+  color:white;
   justify-content: space-between;
   padding: 30px;
 }
@@ -26,7 +27,7 @@ form {
 }
 
 .empty {
-  height: 60px;
+  height: 57px;
 }
 
 .bottom {
@@ -36,6 +37,8 @@ form {
   background-color:#edd195;
   margin: auto auto 20px auto;
   align-items: center;
+  border: 1px solid #f44b42;
+  opacity: .98;
 }
 a{
     font-size:15px;
@@ -47,7 +50,7 @@ input {
   height: 37px;
   border-radius: 5px;
   text-indent: 6px;
-  border: 1px solid chocolate;
+  border: 1px solid #466368;
 }
 
 button {

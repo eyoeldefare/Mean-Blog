@@ -11,6 +11,12 @@
     <div style="height:10px;">
 
     </div>
+    <div style=" margin: auto" class="row show-hide-message">
+      <div style="width:86%; margin: auto" [ngClass]="messageClass">
+        {{message}}
+      </div>
+    </div>
+
     <form [formGroup]="form" (submit)="onRegister()">
 
       <div class="form-group">
@@ -50,8 +56,7 @@
                  Password: </label>
 
           <div class="input">
-            <input type="password" name="password" class="form-control" autocomplete="off" formControlName="password"
-            />
+            <input type="password" name="password" class="form-control" autocomplete="off" formControlName="password" />
             <ul class="help-block">
               <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">This field is required</li>
               <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">Atleast 8 characters long</li>
@@ -84,7 +89,6 @@
         <label for="email">Email</label>
         <div [ngClass]="{'has-error': (form.controls.email.errors && form.controls.email.dirty), 'has-success': !form.controls.email.errors}">
           <input type="text" name="email" class="form-control" autocomplete="off" placeholder="" formControlName="email" />
-          <!-- Validation -->
           <ul class="help-block">
             <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">Required</li>
             <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">Invalid email</li>
@@ -99,6 +103,9 @@
     </form>
     <div class="empty">
     </div>
+
+  </div>
+  <div class="empty">
 
   </div>
 
