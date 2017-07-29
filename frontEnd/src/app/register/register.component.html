@@ -11,15 +11,14 @@
     <div style="height:10px;">
 
     </div>
-    <div style=" margin: auto" class="row show-hide-message">
-      <div style="width:86%; margin: auto" [ngClass]="messageClass">
-        {{message}}
-      </div>
-    </div>
-
     <form [formGroup]="form" (submit)="onRegister()">
 
       <div class="form-group">
+        <div style=" margin: auto auto 5px auto" class="row show-hide-message">
+          <div style="width:100%; margin: auto" [ngClass]="messageClass">
+            {{message}}
+          </div>
+        </div>
         <label for="firstname">Firstname: </label>
         <div [ngClass]="{'has-error': (form.controls.firstname.errors && form.controls.firstname.dirty), 'has-success': !form.controls.firstname.errors}">
           <input type="text" name="firstname" class="form-control" autocomplete="off" formControlName="firstname" />

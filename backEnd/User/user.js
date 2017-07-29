@@ -1,15 +1,14 @@
-
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise; 
-const Schema = mongoose.Schema; 
-const bcrypt = require('bcrypt-nodejs'); 
+mongoose.Promise = global.Promise;
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt-nodejs');
 
 let emailLengthChecker = (email) => {
   if (!email) {
-    return false; 
+    return false;
   } else {
     if (email.length < 5 || email.length > 30) {
-      return false; 
+      return false;
     } else {
       return true;
     }
@@ -18,15 +17,14 @@ let emailLengthChecker = (email) => {
 
 let validEmailChecker = (email) => {
   if (!email) {
-    return false; 
+    return false;
   } else {
     const regExp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-    return regExp.test(email); 
+    return regExp.test(email);
   }
 };
 
-const emailValidators = [
-  {
+const emailValidators = [{
     validator: emailLengthChecker,
     message: 'E-mail must be at least 5 characters but no more than 30'
   },
@@ -38,12 +36,12 @@ const emailValidators = [
 
 let usernameLengthChecker = (username) => {
   if (!username) {
-    return false; 
+    return false;
   } else {
     if (username.length < 3 || username.length > 15) {
-      return false; 
+      return false;
     } else {
-      return true; 
+      return true;
     }
   }
 };
@@ -53,7 +51,7 @@ let validUsername = (username) => {
     return false;
   } else {
     const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
-    return regExp.test(username); 
+    return regExp.test(username);
   }
 };
 
@@ -72,29 +70,28 @@ const usernameValidators = [
 
 let passwordLengthChecker = (password) => {
   if (!password) {
-    return false; 
+    return false;
   } else {
     if (password.length < 8 || password.length > 20) {
-      return false; 
+      return false;
     } else {
-      return true; 
+      return true;
     }
   }
 };
 
 let validPassword = (password) => {
   if (!password) {
-    return false; 
+    return false;
   } else {
     const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
-    return regExp.test(password); 
+    return regExp.test(password);
   }
 };
 
-const passwordValidators = [
-  {
+const passwordValidators = [{
     validator: passwordLengthChecker,
-    message: 'Password must be at least 8 characters but no more than 35'
+    message: 'Password must be at least 8 characters'
   },
   {
     validator: validPassword,
@@ -103,25 +100,48 @@ const passwordValidators = [
 ];
 
 const userSchema = new Schema({
-  email: { type: String, required: true, unique: true, lowercase: true, validate: emailValidators },
-  username: { type: String, required: true, unique: true, lowercase: true, validate: usernameValidators },
-  password: { type: String, required: true, validate: passwordValidators }
+  firstname: {
+    type: String,
+    required: true
+  },
+  lastname: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    validate: emailValidators
+  },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    validate: usernameValidators
+  },
+  password: {
+    type: String,
+    required: true,
+    validate: passwordValidators
+  }
 });
 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
   if (!this.isModified('password'))
     return next();
 
   bcrypt.hash(this.password, null, null, (err, hash) => {
-    if (err) return next(err); 
-    this.password = hash; 
-    next(); 
+    if (err) return next(err);
+    this.password = hash;
+    next();
   });
 });
 
-// bcryt the password
-userSchema.methods.comparePassword = (password) => {
-  return bcrypt.compareSync(password, this.password); // Return comparison of login password to password in database (true or false)
+userSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);

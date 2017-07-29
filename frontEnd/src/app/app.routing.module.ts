@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
+import { ProfileComponent } from './profile/profile.component'; 
 
 const appRoutes: Routes = [
   {
@@ -20,8 +21,16 @@ const appRoutes: Routes = [
     component: PopularComponent
   },
   {
+    path:"home",
+    component:HomeComponent
+  },
+  {
     path:'recent',
     component:RecentComponent
+  },
+  {
+    path:'profile',
+    component:ProfileComponent
   },
   {
     path: 'register',

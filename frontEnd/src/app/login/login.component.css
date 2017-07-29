@@ -6,7 +6,7 @@
 .top {
   height: 80px;
   width: 30%;
-  background-color: #e04e35;
+  background-color: #466368;
   min-width: 317px;
   margin: auto;
   align-items: center;
@@ -31,13 +31,12 @@ form {
 }
 
 .bottom {
-  height: 440px;
   width: 30%;
   min-width: 317px;
   background-color:#edd195;
   margin: auto auto 20px auto;
   align-items: center;
-  border: 1px solid #f44b42;
+  border: 1px solid #466368;
   opacity: .98;
 }
 a{
@@ -56,8 +55,8 @@ input {
 button {
   height: 37px;
   border-radius: 5px;
-  background-color: #f44b42;
-  border: 1px solid #f44b42;
+  background-color: #466368;
+  border: 1px solid #466368;
   color:white;
 }
 

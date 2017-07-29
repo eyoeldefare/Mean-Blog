@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule} from '@angular/forms';
-import { HttpModule} from "@angular/http";
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from "@angular/http";
 import { AppRoutingModule } from './app.routing.module'
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -11,7 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
-import {AuthenticateService} from './service/authenticate.service'
+import { AuthenticateService } from './service/authenticate.service';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import {AuthenticateService} from './service/authenticate.service'
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpModule
-    
+    HttpModule,
   ],
   providers: [AuthenticateService],
   bootstrap: [AppComponent]
