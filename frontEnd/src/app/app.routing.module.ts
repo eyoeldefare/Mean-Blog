@@ -5,36 +5,44 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
-import { ProfileComponent } from './profile/profile.component'; 
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './authGuard/login.auth'
+import { NotauthGuard } from './authGuard/logout.auth'
+import { BlogComponent } from './blog/blog.component';
 
 const appRoutes: Routes = [
   {
-    path: '',
-    component: HomeComponent
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [NotauthGuard]
+
+
   },
   {
-    path: 'login',
-    component: LoginComponent
+    path:'blog',
+    component:BlogComponent
   },
   {
     path: 'popular',
     component: PopularComponent
   },
   {
-    path:"home",
-    component:HomeComponent
+    path: "",
+    component: HomeComponent
   },
   {
-    path:'recent',
-    component:RecentComponent
+    path: 'recent',
+    component: RecentComponent
   },
   {
-    path:'profile',
-    component:ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [NotauthGuard]
   }
 
 ]

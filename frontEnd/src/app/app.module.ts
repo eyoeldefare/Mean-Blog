@@ -12,6 +12,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
 import { AuthenticateService } from './service/authenticate.service';
+import { AuthGuard } from './authGuard/login.auth';
+import { NotauthGuard } from './authGuard/logout.auth';
+import { BlogComponent } from './blog/blog.component';
+ 
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { AuthenticateService } from './service/authenticate.service';
     RegisterComponent,
     ProfileComponent,
     PopularComponent,
-    RecentComponent
+    RecentComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,7 @@ import { AuthenticateService } from './service/authenticate.service';
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [AuthenticateService],
+  providers: [AuthenticateService, AuthGuard, NotauthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

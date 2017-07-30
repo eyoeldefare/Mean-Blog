@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit {
         this.message = data.message; // Set a success message
         // After 2 second timeout, navigate to the login page
         setTimeout(() => {
-          this.router.navigate(['/login']); // Redirect to login view
+          this.router.navigate(['/profile']); // Redirect to login view
         }, 2000);
       }
     });

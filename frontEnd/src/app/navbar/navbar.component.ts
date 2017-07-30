@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   }
   onLogoutClick() {
     this.as.logout();
-    this.router.navigate(['/home'])
+    this.router.navigate([''])
   }
  
 
