@@ -1,0 +1,49 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+  <!--Menuebar button-->
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fa fa-bars fa-lg" aria-hidden="true"></i>
+  </button>
+
+  <!--title-->
+  <a class="navbar-brand" routerLink="">Navbar</a>
+
+  <!--lists-->
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <a class="nav-link" routerLink="popular"><i class="fa fa-fire " aria-hidden="true"></i> Popular</a>
+      </li>
+
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <a class="nav-link" routerLink="recent"><i class="fa fa-eye" aria-hidden="true"></i>
+      Recent</a>
+      </li>
+
+    </ul>
+    <!--search-->
+    <form [formGroup]='' class="form-inline my-2 my-lg-0">
+
+      <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="search...">
+      <button id='searchButton' class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav mt-2 mt-md-0">
+      <li class="nav-item">
+        <a *ngIf="!this.as.loggedIn()" class="nav-link" routerLink="login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            Login</a>
+      </li>
+      <li  class="nav-item">
+        <a *ngIf="this.as.loggedIn()" (click) = "onLogoutClick()" class="nav-link" routerLink="login"><i class="fa fa-sign-in" aria-hidden="true"></i>
+            Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"><i class="fa fa-facebook-square" aria-hidden="true"></i>
+      </a>
+
+      </li>
+      <li class="nav-item"><a class="nav-link"><i class="fa fa-twitter-square" aria-hidden="true"></i>
+</a></li>
+    </ul>
+  </div>
+</nav>
