@@ -20,6 +20,10 @@
         <a class="nav-link" routerLink="recent"><i class="fa fa-eye" aria-hidden="true"></i>
       Recent</a>
       </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
+        <a class="nav-link" routerLink="blog"><i class="fa fa-edit" aria-hidden="true"></i>
+      Write</a>
+      </li>
 
     </ul>
     <!--search-->
