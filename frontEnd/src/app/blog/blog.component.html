@@ -1,39 +1,44 @@
 <section class="jumbotron">
   <div class="row">
-
+    <div class="row show-hide-message">
+      <div [ngClass]="messageClass">
+        {{message}}
+      </div>
+    </div>
     <div class="col-sm-12">
       <h3 class="text-center">Wanna hate?</h3>
 
-      <form [formGroup]='' class="form-group">
+      <form [formGroup]='form' class="form-group" (submit)="submitBlog()">
         <div class="form-group row">
           <label for="tag" class="col-2 col-form-label">Title</label>
           <div class="col-md-10 col-sm-12">
-            <input class="form-control" type="text" id="tag">
+            <input formControlName="title" class="form-control" type="text" id="tag">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="tag" class="col-2 col-form-label">Tags</label>
           <div class="col-md-10 col-sm-12">
-            <input class="form-control" type="text" id="tag">
+            <input formControlName="tags" class="form-control" type="text" id="tag">
           </div>
         </div>
         <div class="form-group row">
           <label for="body" class="col-2 col-form-label">Summery</label>
           <div class="col-md-10 col-sm-12">
 
-            <textarea style="height:100px" class='form-control'></textarea>
+            <textarea formControlName="summery" style="height:100px" class='form-control'></textarea>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="body" class="col-2 col-form-label">Google doc embed link</label>
           <div class="col-md-10 col-sm-12">
-            <input class="form-control" type="text" id="tag">
+            <input formControlName="googledoc" class="form-control" type="text" id="tag">
           </div>
 
 
         </div>
+
         <div class="col-xlg-6 text-center">
           <button type="submit" class="btn btn-primary ">Submit Blog</button>
         </div>

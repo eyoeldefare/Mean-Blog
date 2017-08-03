@@ -1,4 +1,4 @@
-const User = require('../User/user');
+const User = require('../Model/user');
 const jwt = require('jsonwebtoken');
 const Data = require('../Mongo/mongoose')
 module.exports = (router) => {

@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PopularComponent } from './popular/popular.component';
 import { RecentComponent } from './recent/recent.component';
 import { AuthenticateService } from './service/authenticate.service';
+import {BlogService} from './service/blog.service';
 import { AuthGuard } from './authGuard/login.auth';
 import { NotauthGuard } from './authGuard/logout.auth';
 import { BlogComponent } from './blog/blog.component';
@@ -35,7 +36,7 @@ import { BlogComponent } from './blog/blog.component';
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [AuthenticateService, AuthGuard, NotauthGuard ],
+  providers: [AuthenticateService, AuthGuard, NotauthGuard, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

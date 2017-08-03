@@ -1,6 +1,7 @@
 <body>
   <script>
-    
+
+
   </script>
   <div id="container">
     <header>
@@ -11,7 +12,7 @@
         <p>We are haters and trolls who dream of changing the world one hate at a time!!!</p>
         <div id="inputs">
           <button type="button">Subscribe</button>
-          
+
           <button id="register"><a  [routerLink]="['/register']" style="color:black; text-decoration:none;">Register</a></button>
 
 
@@ -38,12 +39,44 @@
         <div id="line"></div>
       </section>
 
-      <!--this is where the blogs go-->
 
+
+
+
+      <!--this is where the blogs go-->
       <section id="blogs">
 
 
+        <div class="blogitem" ng-repeat="blog in model1.blogs">
+          <a ng-click="model1.read()">
+					   <img src="http://www.fdhs.com/wp-content/uploads/2011/08/fdhs-5-31.jpg" alt="img1">
+					   </a>
+          <div class="peopleanddate">
+            <h6>{{"blog.hash"}}</h6>
+            <p>{{"blog.date"}}</p>
+          </div>
+          <a href="#">
+            <h3>{{"hehe"}}</h3>
+          </a>
+          <a href="#">
+            <article>jsfkskfdsfsdjsfkskfdsfsd
+              jsfkskf
+              dsfsdjsfkskfdsfs
+              djsfkskfdsfsdjsfkskfdsfsdjsj
+              fkskfdsfsd
+              fsdjsfkskfdsfsdjsfkskfdsfsd2</article>
+          </a>
+        </div>
+
       </section>
+
+
+
+
+
+
+
+
       <section id="blue">
         <div class="log">
           <div style="height:60px">
@@ -58,7 +91,7 @@
 
             <input type="button" value=" Sign in " style="font-size:15px; background: rgba(10, 45, 55,.9); color:white; border:none;">
           </div>
-         
+
 
         </div>
         <div class="log">

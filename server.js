@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const mongoConfig = require('./backEnd/Mongo/mongoose');
 const path = require('path');
 const authentication = require('./backEnd/Athenticate/anthenticate')(router);
+const blogauthentication = require('./backEnd/Athenticate/blog.authenticate')(router);
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
@@ -24,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); 
 app.use(express.static(__dirname + '/client/dist/')); 
 app.use('/authentication', authentication);
-
+app.use('/blogs', blogauthentication);
 app.listen(3000, function(){
     console.log('server at 3000...');
 })
