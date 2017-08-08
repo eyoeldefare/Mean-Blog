@@ -56,10 +56,7 @@ export class AuthenticateService {
     this.authToken = token; 
     this.user = user; 
   }
-  getProfile() {
-    this.createAuthenticationHeaders(); 
-    return this.http.get(this.domain + '/authentication/profile', this.options).map(res => res.json());
-  }
+ 
  loggedIn() {
   return tokenNotExpired();
 }

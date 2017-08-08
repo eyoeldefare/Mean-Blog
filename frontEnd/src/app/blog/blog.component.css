@@ -1,6 +1,9 @@
 .text-center{
     margin: 10px;
 }
+.row{
+    margin-left: 1px;
+}
 
 
 @media screen and (max-width: 800px){

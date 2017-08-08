@@ -13,8 +13,8 @@
         <div id="inputs">
           <button type="button">Subscribe</button>
 
-          <button id="register"><a  [routerLink]="['/register']" style="color:black; text-decoration:none;">Register</a></button>
-
+          <button *ngIf="!auth.loggedIn()" id="register"><a  [routerLink]="['/register']" style="color:black; text-decoration:none;">Register</a></button>
+          <button *ngIf="auth.loggedIn()" type=""><a  [routerLink]="['/blog']" style="color:black; text-decoration:none;">Write a blog</a></button>
 
 
         </div>
@@ -47,24 +47,21 @@
       <section id="blogs">
 
 
-        <div class="blogitem" ng-repeat="blog in model1.blogs">
+        <div class="blogitem" *ngFor="let blog of blogs">
           <a ng-click="model1.read()">
 					   <img src="http://www.fdhs.com/wp-content/uploads/2011/08/fdhs-5-31.jpg" alt="img1">
-					   </a>
+					</a>
           <div class="peopleanddate">
-            <h6>{{"blog.hash"}}</h6>
-            <p>{{"blog.date"}}</p>
+            <h6>by {{blog.createdBy}}</h6>
+            <p>{{blog.createdAt | date: "MM, dd yyyy"}}</p>
           </div>
           <a href="#">
-            <h3>{{"hehe"}}</h3>
+            <h3>{{blog.title}}</h3>
           </a>
           <a href="#">
-            <article>jsfkskfdsfsdjsfkskfdsfsd
-              jsfkskf
-              dsfsdjsfkskfdsfs
-              djsfkskfdsfsdjsfkskfdsfsdjsj
-              fkskfdsfsd
-              fsdjsfkskfdsfsdjsfkskfdsfsd2</article>
+            <article>
+              {{blog.summery}}
+            </article>
           </a>
         </div>
 

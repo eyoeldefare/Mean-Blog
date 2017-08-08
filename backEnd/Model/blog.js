@@ -13,6 +13,7 @@ const blogSchema = new Schema({
   },
   createdBy: {
     type: String
+   
   },
   createdAt: {
     type: String,

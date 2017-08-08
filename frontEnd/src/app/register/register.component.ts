@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
         Validators.maxLength(35),
         this.validatePassword
       ])],
-      
+
       password1: ['', Validators.required]
     }, { validator: matchingPasswords });
   }
@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
     } else {
       return { 'validateUsername': true }
     }
-  }email
+  } 
 
   validatePassword(controls) {
     const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,20}$/);
@@ -95,45 +95,38 @@ export class RegisterComponent implements OnInit {
     }
 
     this.as.registerUser(user).subscribe(data => {
-      // Resposne from registration attempt
       if (!data.success) {
-        this.messageClass = 'alert alert-danger'; // Set an error class
-        this.message = data.message; // Set an error message
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
       } else {
-        this.messageClass = 'alert alert-success'; // Set a success class
-        this.message = data.message; // Set a success message
-        // After 2 second timeout, navigate to the login page
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
         setTimeout(() => {
-          this.router.navigate(['/profile']); // Redirect to login view
+          this.router.navigate(['/profile']);
         }, 2000);
       }
     });
   }
 
   checkEmail() {
-    // Function from authentication file to check if e-mail is taken
     this.as.checkEmail(this.form.get('email').value).subscribe(data => {
-      // Check if success true or false was returned from API
       if (!data.success) {
-        this.emailValid = false; // Return email as invalid
-        this.emailMessage = data.message; // Return error message
+        this.emailValid = false;
+        this.emailMessage = data.message;
       } else {
-        this.emailValid = true; // Return email as valid
-        this.emailMessage = data.message; // Return success message
+        this.emailValid = true;
+        this.emailMessage = data.message;
       }
     });
   }
-  // Function to check if username is available
   checkUsername() {
-    // Function from authentication file to check if username is taken
     this.as.checkUsername(this.form.get('username').value).subscribe(data => {
-      // Check if success true or success false was returned from API
       if (!data.success) {
-        this.usernameValid = false; // Return username as invalid
-        this.usernameMessage = data.message; // Return error message
+        this.usernameValid = false;
+        this.usernameMessage = data.message;
       } else {
-        this.usernameValid = true; // Return username as valid
-        this.usernameMessage = data.message; // Return success message
+        this.usernameValid = true;
+        this.usernameMessage = data.message;
       }
     });
   }
