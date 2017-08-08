@@ -1,0 +1,14 @@
+.text-center{
+    margin: 10px;
+}
+
+
+@media screen and (max-width: 800px){
+    .form-group{
+        flex-direction: column;
+    }
+   
+    label{
+        white-space: nowrap;
+    }
+}
