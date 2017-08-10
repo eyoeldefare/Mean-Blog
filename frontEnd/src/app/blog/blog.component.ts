@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogService } from "../service/blog.service";
 import { AuthenticateService } from '../service/authenticate.service';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',
@@ -9,11 +10,10 @@ import { AuthenticateService } from '../service/authenticate.service';
 })
 export class BlogComponent implements OnInit {
   form;
-  username;
-  something;
   message;
+  username;
   messageClass;
-  constructor(private fb: FormBuilder, private blogservice: BlogService, private auth: AuthenticateService) {
+  constructor(private fb: FormBuilder, private route: Router, private blogservice: BlogService, private auth: AuthenticateService) {
     this.blogForm()
   }
 
@@ -45,9 +45,10 @@ export class BlogComponent implements OnInit {
       tags: this.form.get("tags").value,
       summery: this.form.get("summery").value,
       googledoc: this.form.get("googledoc").value,
-      createdBy: this.username,
+      createdBy: this.username
 
     }
+
     this.blogservice.createBlog(blog).subscribe(data => {
       if (!data.success) {
         this.message = data.message
@@ -58,7 +59,9 @@ export class BlogComponent implements OnInit {
       else {
         this.message = data.message;
         this.messageClass = "alert alert-success"
-            console.log("blog submited")
+        setTimeout(() => {
+          this.route.navigate(['']); 
+        }, 2000);
 
 
       }
@@ -66,11 +69,6 @@ export class BlogComponent implements OnInit {
 
   }
 
-  newBlogForm() {
-    this.auth.getProfile().subscribe(profile => {
-      this.username = profile.user.username
-    })
 
-  }
 
 }

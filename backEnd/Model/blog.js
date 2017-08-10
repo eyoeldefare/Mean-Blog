@@ -13,6 +13,7 @@ const blogSchema = new Schema({
   },
   createdBy: {
     type: String
+   
   },
   createdAt: {
     type: String,
@@ -26,8 +27,5 @@ const blogSchema = new Schema({
     type: String,
   },
 });
-
-
-
 
 module.exports = mongoose.model('Blog', blogSchema);

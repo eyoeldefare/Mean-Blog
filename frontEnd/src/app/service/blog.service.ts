@@ -10,7 +10,9 @@ import { AuthenticateService } from './authenticate.service';
 export class BlogService {
   options;
   domain = this.auth.domain;
-  constructor(private auth: AuthenticateService, private http:Http) { }
+  constructor(private auth: AuthenticateService, private http: Http) {
+
+   }
 
   createAuthenticationHeaders() {
     this.auth.loadToken();
@@ -22,9 +24,13 @@ export class BlogService {
     });
   }
 
-  createBlog(blog){
+  createBlog(blog) {
     this.createAuthenticationHeaders();
     return this.http.post(this.domain + '/blogs/thumbnail', blog, this.options).map(res => res.json())
   }
-
+  allBlogs() {
+    this.createAuthenticationHeaders()
+    return this.http.get(this.domain +'/blogs/blogthumbnails',this.options).map(res =>res.json())
+  }
+ 
 }
