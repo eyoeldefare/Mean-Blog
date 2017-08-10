@@ -39,11 +39,15 @@ header #square #inputs{
 
 	
 }
+
 header #square #inputs button{
 	margin: 7px;
-	padding: 10px 12px 10px 12px;
+	
+	padding: 12px 5px;
     border: 1px solid black;
 	font-size: 16px;
+	width:120px;
+	white-space: nowrap;
 	background-color:burlywood;
 	border-style:groove;
 	cursor:pointer;	
@@ -121,9 +125,6 @@ main #blogs .blogitem img{
 	width: 98%;
 	height: 54%;
 	margin: 3px;
-	
-
-	
 }
 .peopleanddate{
 	display: flex;
@@ -142,63 +143,7 @@ main #blogs .blogitem h3{
 main #blogs .blogitem article{
 	margin: 0 3px;
 }
-#blue{
-	width: 100%;
-	display: flex;
-	background: cadetblue;
-	opacity: .9;
-}
-#blue>hr{
-	border: 8px cadetblue;
-	border-radius: 100%;
-	border-style:double;
-	background-color:darkslategray;
-	margin: 30px 0 30px 35px;
-}
-#warning{
-	margin:2px auto;
-	background-color: lightblue;
-	opacity: .93;
-	border-radius: 6px;
-	text-align: center;
-	color: #1e4255;
-	width:90%;
-	padding:10px;
-}
-main .log{
-	background-color:cadetblue;
-	flex: 1;
-	min-height: 260px;
-    height: 400px;
-    align-items: center;
-}
-main .log h2{
-	padding-top: 30px;
-	margin: 10px;
-	font-size: 40px;
-	text-align: center;
-}
-main .log p{
-	margin:10px 15px 15px 10px;
-	text-align: center;
-	font-size: 17px;
-}
-main .log div{
-	display: flex;
-	justify-content: center;
-}
-main .log div input{
-	margin:4px;
-	padding: 9px;
-	background-color:azure;
-	border-color: cadetblue;
-	border-style:groove;
-	
-}
-main .log a{
-	color: black;
-	text-decoration: none;
-}
+
 /*--------------------footer----------------*/
 footer {
     background-color:#add6b2;

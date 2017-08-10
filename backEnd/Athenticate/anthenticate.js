@@ -2,6 +2,7 @@ const User = require('../Model/user');
 const jwt = require('jsonwebtoken');
 const Data = require('../Mongo/mongoose')
 module.exports = (router) => {
+
     router.post('/register', (req, res) => {
         // email
         if (!req.body.email) {
@@ -106,7 +107,8 @@ module.exports = (router) => {
                                             });
                                         }
                                     }
-                                } else {
+                                } 
+                                else {
                                     res.json({
                                         success: true,
                                         message: 'Registered!'

@@ -2,7 +2,7 @@ const Blog = require('../Model/blog');
 const Data = require('../Mongo/mongoose')
 module.exports = (router) => {
 
-    router.use('/thumbnail',(req, res, next) => {
+    router.use('/blogs/thumbnail', (req, res, next) => {
 
         const token = req.headers['authorization'];
         if (!token) {
@@ -24,7 +24,6 @@ module.exports = (router) => {
             });
         }
     });
-
     router.post('/thumbnail', (req, res) => {
         if (!req.body.title) {
             res.json({
@@ -46,6 +45,14 @@ module.exports = (router) => {
                     })
 
                 } else {
+                    if (!req.body.tags) {
+                        res.json({
+                            success: false,
+                            message: "Please select a tag"
+                        })
+
+                    }
+                    else {
                     const blog = new Blog({
                         title: req.body.title,
                         tags: req.body.tags,
@@ -64,19 +71,30 @@ module.exports = (router) => {
                                         message: "please enter a title"
                                     })
                                 } else {
-                                    if (err.errors.summery) {
+                                    if (err.errors.tags) {
                                         res.json({
                                             success: false,
-                                            message: "please enter a summery"
+                                            message: "something wrong here"
                                         })
                                     } else {
-                                        if (err.errors.googledoc) {
+                                        if (err.errors.summery) {
                                             res.json({
                                                 success: false,
-                                                message: "please enter a googledoc embded link"
+                                                message: "please enter a summery"
                                             })
+                                        } else {
+                                            if (err.errors.googledoc) {
+                                                res.json({
+                                                    success: false,
+                                                    message: "please enter a googledoc embded link"
+                                                })
+                                            }
                                         }
+
                                     }
+
+
+
                                 }
                             }
                             res.json({
@@ -93,11 +111,11 @@ module.exports = (router) => {
                     })
 
                 }
+                } 
             }
         }
 
     });
-
     router.get("/blogthumbnails", (req, res) => {
         Blog.find({}, (err, blogs) => {
             if (err) {

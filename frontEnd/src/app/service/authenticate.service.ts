@@ -44,6 +44,7 @@ export class AuthenticateService {
     return this.http.post(this.domain + '/authentication/login', user).map(res => res.json());
   }
 
+
   logout() {
     this.authToken = null; 
     this.user = null; 
