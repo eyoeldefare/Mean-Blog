@@ -19,6 +19,10 @@ const blogSchema = new Schema({
     type: String,
     default: Date.now()
   },
+  thumbnail:{
+    type: String,
+    required: true,
+  },
   summery: {
     type: String,
     required: true,

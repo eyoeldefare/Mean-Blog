@@ -107,8 +107,7 @@ module.exports = (router) => {
                                             });
                                         }
                                     }
-                                } 
-                                else {
+                                } else {
                                     res.json({
                                         success: true,
                                         message: 'Registered!'
@@ -122,6 +121,7 @@ module.exports = (router) => {
             }
         }
     });
+
 
     router.get('/checkEmail/:email', (req, res) => {
         // is email entered 
@@ -247,7 +247,6 @@ module.exports = (router) => {
             }
         }
     });
-
 
     return router;
 }

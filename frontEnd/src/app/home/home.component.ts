@@ -13,9 +13,8 @@ import { EmailService } from '../service/email.service';
 })
 export class HomeComponent implements OnInit {
   blogs: any;
-  username;
-  messageClass;
-  message;
+  messageClass: String;
+  message: String;
   form: FormGroup;
 
   constructor(
@@ -30,7 +29,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getBlog()
+    
   }
+
+
+
 
   getBlog() {
     this.bs.allBlogs().subscribe(data => {
@@ -60,7 +63,7 @@ export class HomeComponent implements OnInit {
         this.message = data.message;
       } else {
         this.messageClass = 'green';
-        this.message = data.message;        
+        this.message = data.message;
       }
     });
   }
@@ -72,8 +75,8 @@ export class HomeComponent implements OnInit {
       return { 'validateEmail': true }
     }
   }
-
-
+  
+ 
 
 
 }
