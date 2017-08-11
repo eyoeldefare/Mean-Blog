@@ -14,7 +14,7 @@ export class BlogComponent implements OnInit {
   username;
   messageClass;
   constructor(private fb: FormBuilder, private route: Router, private blogservice: BlogService, private auth: AuthenticateService) {
-    this.blogForm()
+    this.blogForm();
   }
 
   ngOnInit() {
@@ -33,17 +33,23 @@ export class BlogComponent implements OnInit {
         Validators.required,
         Validators.maxLength(150),
       ])],
+      thumbnail: ['', Validators.required],
 
       googledoc: ['', Validators.compose([
         Validators.required,
       ])]
     })
   }
+
   submitBlog() {
+    this.auth.loadUser();
+    this.username = JSON.parse(this.auth.user);
+    this.username = this.username.username;
     const blog = {
       title: this.form.get("title").value,
       tags: this.form.get("tags").value,
       summery: this.form.get("summery").value,
+      thumbnail: this.form.get("thumbnail").value,
       googledoc: this.form.get("googledoc").value,
       createdBy: this.username
 
@@ -53,14 +59,14 @@ export class BlogComponent implements OnInit {
       if (!data.success) {
         this.message = data.message
         this.messageClass = "alert alert-danger"
-            console.log("blog failed")
+        console.log("blog failed")
 
       }
       else {
         this.message = data.message;
         this.messageClass = "alert alert-success"
         setTimeout(() => {
-          this.route.navigate(['']); 
+          this.route.navigate(['']);
         }, 2000);
 
 

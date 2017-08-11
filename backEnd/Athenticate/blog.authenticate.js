@@ -1,8 +1,10 @@
 const Blog = require('../Model/blog');
 const Data = require('../Mongo/mongoose')
+const jwt = require('jsonwebtoken');
+
 module.exports = (router) => {
 
-    router.use('/blogs/thumbnail', (req, res, next) => {
+    router.use('/thumbnail', (req, res, next) => {
 
         const token = req.headers['authorization'];
         if (!token) {
@@ -45,10 +47,10 @@ module.exports = (router) => {
                     })
 
                 } else {
-                    if (!req.body.tags) {
+                    if (!req.body.tags || !req.body.thumbnail) {
                         res.json({
                             success: false,
-                            message: "Please select a tag"
+                            message: "Please enter a tag and thumbnail pic"
                         })
 
                     }
@@ -59,6 +61,7 @@ module.exports = (router) => {
                         createAt: req.body.createAt,
                         createdBy: req.body.createdBy,
                         summery: req.body.summery,
+                        thumbnail: req.body.thumbnail,
                         googledoc: req.body.googledoc
                     });
 
@@ -71,22 +74,22 @@ module.exports = (router) => {
                                         message: "please enter a title"
                                     })
                                 } else {
-                                    if (err.errors.tags) {
+                                    if (err.errors.tags || err.errors.thumbnail) {
                                         res.json({
                                             success: false,
-                                            message: "something wrong here"
+                                            message: "Please enter a correct thumbnail and tags "
                                         })
                                     } else {
                                         if (err.errors.summery) {
                                             res.json({
                                                 success: false,
-                                                message: "please enter a summery"
+                                                message: "Unalble to post summery"
                                             })
                                         } else {
                                             if (err.errors.googledoc) {
                                                 res.json({
                                                     success: false,
-                                                    message: "please enter a googledoc embded link"
+                                                    message: "Unalble to post summery googledoc embded link"
                                                 })
                                             }
                                         }

@@ -12,23 +12,29 @@ export class AuthenticateService {
   user;
   options;
 
+
   constructor(private http: Http) {
-    
+    this.loadUser()
+
   }
   createAuthenticationHeaders() {
-    this.loadToken(); 
+    this.loadToken();
     this.options = new RequestOptions({
       headers: new Headers({
-        'Content-Type': 'application/json', 
-        'authorization': this.authToken 
+        'Content-Type': 'application/json',
+        'authorization': this.authToken
       })
     });
+  }
+
+
+  loadUser() {
+    this.user = localStorage.getItem('user');
   }
 
   loadToken() {
     this.authToken = localStorage.getItem('token');
   }
-
   registerUser(user) {
     return this.http.post(this.domain + '/authentication/register', user).map(res => res.json());
   }
@@ -45,20 +51,22 @@ export class AuthenticateService {
   }
 
 
+
   logout() {
-    this.authToken = null; 
-    this.user = null; 
-    localStorage.clear(); 
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
   }
 
   storeUserData(token, user) {
-    localStorage.setItem('token', token); 
-    localStorage.setItem('user', JSON.stringify(user)); 
-    this.authToken = token; 
-    this.user = user; 
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+    return
   }
- 
- loggedIn() {
-  return tokenNotExpired();
-}
+
+  loggedIn() {
+    return tokenNotExpired();
+  }
 }
