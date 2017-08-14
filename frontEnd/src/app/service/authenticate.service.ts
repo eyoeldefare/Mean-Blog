@@ -63,7 +63,7 @@ export class AuthenticateService {
     localStorage.setItem('user', JSON.stringify(user));
     this.authToken = token;
     this.user = user;
-    return
+  
   }
 
   loggedIn() {

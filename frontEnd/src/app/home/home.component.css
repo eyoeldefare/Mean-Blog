@@ -94,6 +94,7 @@ main #line{
 	width:90%;
 	border-style:dotted;
 }
+
 main #blogs{
 	display: flex;
 	flex-wrap: wrap;

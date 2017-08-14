@@ -9,6 +9,7 @@ import { AuthGuard } from './authGuard/login.auth'
 import { NotauthGuard } from './authGuard/logout.auth'
 import { BlogComponent } from './blog/blog.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { WriteblogComponent} from './writeblog/writeblog.component';
 
 const appRoutes: Routes = [
   {
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
 
 
   },
+
   {
     path:'blog',
     component:BlogComponent,
@@ -25,6 +27,11 @@ const appRoutes: Routes = [
 
 
   },
+  {
+    path:":id",
+    component:WriteblogComponent
+  },
+  
   {
     path: 'popular',
     component: PopularComponent

@@ -28,16 +28,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getBlog()
-    
+    this.getAllblogs();
   }
 
-
-
-
-  getBlog() {
-    this.bs.allBlogs().subscribe(data => {
+  getAllblogs() {
+    this.bs.getAllblogs().subscribe(data => {
       this.blogs = data.blogs;
+      console.log(this.blogs)
     });
   }
 

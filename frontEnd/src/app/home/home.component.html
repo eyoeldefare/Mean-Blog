@@ -45,7 +45,7 @@
 
       <section id="blogs">
         <div class="blogitem" *ngFor="let blog of blogs">
-          <a ng-click="model1.read()">
+          <a [routerLink]="['/', blog._id]">
 					   <img src="http://www.fdhs.com/wp-content/uploads/2011/08/fdhs-5-31.jpg" alt="img1">
 					</a>
           <div class="peopleanddate">
