@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit, OnChanges {
   messageClass: String;
   message: String;
   form: FormGroup;
-  update;
   @Input() filterBy?: string = "all";
 
   constructor(
@@ -33,11 +32,8 @@ export class HomeComponent implements OnInit, OnChanges {
     this.getAllblogs();
   }
   ngOnChanges() {
-    
-  }
+    this.getAllblogs();
 
-  updatingBlogtags(){
-    this.update = this.bs.getAllblogs();
   }
 
   getAllblogs() {

@@ -5,13 +5,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: any, args?: any): any {
-    // if (args ==="all"){
-    //   return items
-    // }
-    // else{
-    //   return items.tags ===args;
-    // }
+  transform(blogs: any, tags: String): any {
+    if (tags ==="all"){
+      return blogs
+    }
+    else{
+      return blogs.filter(blog => {
+        return blog.tags === tags;
+      }) 
+    }
   }
 
 }
