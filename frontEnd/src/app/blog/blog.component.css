@@ -4,6 +4,9 @@
 .row{
     margin-left: 1px;
 }
+.jumbotron{
+    margin: 0;
+}
 
 
 @media screen and (max-width: 800px){

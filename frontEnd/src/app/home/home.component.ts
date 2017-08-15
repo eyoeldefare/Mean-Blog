@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { AuthenticateService } from "../service/authenticate.service";
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,11 +11,13 @@ import { EmailService } from '../service/email.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
   blogs: any;
   messageClass: String;
   message: String;
   form: FormGroup;
+  update;
+  @Input() filterBy?: string = "all";
 
   constructor(
     private bs: BlogService,
@@ -29,6 +31,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllblogs();
+  }
+  ngOnChanges() {
+    
+  }
+
+  updatingBlogtags(){
+    this.update = this.bs.getAllblogs();
   }
 
   getAllblogs() {
@@ -72,8 +81,8 @@ export class HomeComponent implements OnInit {
       return { 'validateEmail': true }
     }
   }
-  
- 
+
+
 
 
 }

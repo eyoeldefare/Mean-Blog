@@ -141,7 +141,7 @@ module.exports = (router) => {
         })
     })
 
-    router.get("/blogthumbnails/:id", (req, res) => {
+    router.get("/blogthumbnails/blog:id", (req, res) => {
         Blog.findOne({
             _id: req.params.id
         }, (err, blog) => {

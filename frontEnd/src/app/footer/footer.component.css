@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
+/*--------------------footer----------------*/
+footer {
+    background-color:#add6b2;
+    font-family: 'Rajdhani', sans-serif;
+}
+footer #first1{
+    height: 70px;
+    background-color: #8bdda3;
+}
+footer #first1 h2{
+	margin: 0;
+	padding: 25px 0 0 60px;
+}
+footer p{
+	margin: 40px auto 0 auto;
+	text-align: center;
+}
+
+@media screen and (max-width: 700px){
+    footer #first1 h2{
+		text-align: center;
+		padding-right: 35px;
+	}
+
+
+}

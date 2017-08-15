@@ -18,6 +18,8 @@ import { NotauthGuard } from './authGuard/logout.auth';
 import { BlogComponent } from './blog/blog.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { WriteblogComponent } from './writeblog/writeblog.component';
+import { FooterComponent } from './footer/footer.component';
+import { FilterPipe } from './service/filter.pipe';
  
 
 @NgModule({
@@ -31,7 +33,9 @@ import { WriteblogComponent } from './writeblog/writeblog.component';
     RecentComponent,
     BlogComponent,
     PagenotfoundComponent,
-    WriteblogComponent
+    WriteblogComponent,
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

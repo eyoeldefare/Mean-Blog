@@ -9,7 +9,7 @@ import { AuthGuard } from './authGuard/login.auth'
 import { NotauthGuard } from './authGuard/logout.auth'
 import { BlogComponent } from './blog/blog.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import { WriteblogComponent} from './writeblog/writeblog.component';
+import { WriteblogComponent } from './writeblog/writeblog.component';
 
 const appRoutes: Routes = [
   {
@@ -19,19 +19,24 @@ const appRoutes: Routes = [
 
 
   },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [NotauthGuard]
+  },
 
   {
-    path:'blog',
-    component:BlogComponent,
+    path: 'blog',
+    component: BlogComponent,
     canActivate: [AuthGuard]
 
 
   },
   {
-    path:":id",
-    component:WriteblogComponent
+    path: "blog/:id",
+    component: WriteblogComponent
   },
-  
+
   {
     path: 'popular',
     component: PopularComponent
@@ -44,14 +49,8 @@ const appRoutes: Routes = [
     path: 'recent',
     component: RecentComponent
   },
-
   {
-    path: 'register',
-    component: RegisterComponent,
-    canActivate: [NotauthGuard]
-  },
-    {
-    path:"**",
+    path: "**",
     component: PagenotfoundComponent
   }
 

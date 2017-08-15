@@ -145,56 +145,12 @@ main #blogs .blogitem article{
 	margin: 0 3px;
 }
 
-/*--------------------footer----------------*/
-footer {
-    background-color:#add6b2;
-}
-footer #first1{
-    height: 70px;
-    background-color: #8bdda3;
-}
-footer #first1 h2{
-	margin: 0;
-	padding: 25px 0 0 60px;
-}
-footer #second{
-	display: flex;
-	justify-content: space-between;
-}
-#second .one{
-   flex-basis: 25%;
-
-}
-#second .one h4{
-	text-align: center;
-	padding: 20px;
-	font-size: 15px;
-}
-#second .one ul{
-    margin: 0;
-    padding: 0;
-	text-align: center;
-    list-style-type: none;
-}
-#second .one ul li{
-    padding: 10px 0 0 0 ;
-	margin: 5px 0 0 0;
-	font-size: 14px;
-}
-footer p{
-	margin: 40px auto 0 auto;
-	text-align: center;
-}
-
-
 /*-------media-------*/
 @media screen and (max-width: 700px){
 	main .log div{
 		flex-direction: column;
 	}
-	footer #second{
-		flex-direction: column;
-	}
+	
 	.second .one h4{
 		padding: 10px 0 0 0;
 		font-size: 17px
@@ -203,17 +159,7 @@ footer p{
 	header #square p{
 		font-size: 17px;
 	}
-	#second .one ul li{
-		margin: 0;
-		padding: 7px 0 0 0;
-	}
-	footer #first1 h2{
-		text-align: center;
-		padding-right: 35px;
-	}
-	#three{
-		display: none;
-	}
+	
 
 	#bar{
 		display: block;
