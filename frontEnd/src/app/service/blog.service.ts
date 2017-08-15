@@ -34,7 +34,7 @@ export class BlogService {
   }
   getEachblogs(id) {
 
-    return this.http.get(this.domain + '/blogs/blogthumbnails/'+id).map(res => res.json());
+    return this.http.get(this.domain + '/blogs/blogthumbnails/blog'+id).map(res => res.json());
 
   }
 
