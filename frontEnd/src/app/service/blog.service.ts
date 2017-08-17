@@ -11,8 +11,7 @@ export class BlogService {
   options;
   domain = this.auth.domain;
   constructor(private auth: AuthenticateService, private http: Http) {
-
-   }
+  }
 
   createAuthenticationHeaders() {
     this.auth.loadToken();
@@ -28,9 +27,15 @@ export class BlogService {
     this.createAuthenticationHeaders();
     return this.http.post(this.domain + '/blogs/thumbnail', blog, this.options).map(res => res.json())
   }
-  allBlogs() {
-    this.createAuthenticationHeaders()
-    return this.http.get(this.domain +'/blogs/blogthumbnails',this.options).map(res =>res.json())
+  getAllblogs() {
+
+    return this.http.get(this.domain + '/blogs/blogthumbnails').map(res => res.json());
+
   }
- 
+  getEachblogs(id) {
+
+    return this.http.get(this.domain + '/blogs/blogthumbnails/blog'+id).map(res => res.json());
+
+  }
+
 }

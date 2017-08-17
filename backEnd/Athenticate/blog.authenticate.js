@@ -17,7 +17,7 @@ module.exports = (router) => {
                 if (err) {
                     res.json({
                         success: false,
-                        message: 'Token invalid: ' + err
+                        message: "Please re-login to post a blog"
                     });
                 } else {
                     req.decoded = decoded;
@@ -53,68 +53,67 @@ module.exports = (router) => {
                             message: "Please enter a tag and thumbnail pic"
                         })
 
-                    }
-                    else {
-                    const blog = new Blog({
-                        title: req.body.title,
-                        tags: req.body.tags,
-                        createAt: req.body.createAt,
-                        createdBy: req.body.createdBy,
-                        summery: req.body.summery,
-                        thumbnail: req.body.thumbnail,
-                        googledoc: req.body.googledoc
-                    });
+                    } else {
+                        const blog = new Blog({
+                            title: req.body.title,
+                            tags: req.body.tags,
+                            createAt: req.body.createAt,
+                            createdBy: req.body.createdBy,
+                            summery: req.body.summery,
+                            thumbnail: req.body.thumbnail,
+                            googledoc: req.body.googledoc
+                        });
 
-                    blog.save((err) => {
-                        if (err) {
-                            if (err.errors) {
-                                if (err.errors.title) {
-                                    res.json({
-                                        success: false,
-                                        message: "please enter a title"
-                                    })
-                                } else {
-                                    if (err.errors.tags || err.errors.thumbnail) {
+                        blog.save((err) => {
+                            if (err) {
+                                if (err.errors) {
+                                    if (err.errors.title) {
                                         res.json({
                                             success: false,
-                                            message: "Please enter a correct thumbnail and tags "
+                                            message: "please enter a title"
                                         })
                                     } else {
-                                        if (err.errors.summery) {
+                                        if (err.errors.tags || err.errors.thumbnail) {
                                             res.json({
                                                 success: false,
-                                                message: "Unalble to post summery"
+                                                message: "Please enter a correct thumbnail and tags "
                                             })
                                         } else {
-                                            if (err.errors.googledoc) {
+                                            if (err.errors.summery) {
                                                 res.json({
                                                     success: false,
-                                                    message: "Unalble to post summery googledoc embded link"
+                                                    message: "Unalble to post summery"
                                                 })
+                                            } else {
+                                                if (err.errors.googledoc) {
+                                                    res.json({
+                                                        success: false,
+                                                        message: "Unalble to post summery googledoc embded link"
+                                                    })
+                                                }
                                             }
+
                                         }
 
+
+
                                     }
-
-
-
                                 }
+                                res.json({
+                                    success: false,
+                                    message: err
+                                });
+
+                            } else {
+                                res.json({
+                                    success: true,
+                                    message: "blog saved"
+                                })
                             }
-                            res.json({
-                                success: false,
-                                message: err
-                            });
+                        })
 
-                        } else {
-                            res.json({
-                                success: true,
-                                message: "blog saved"
-                            })
-                        }
-                    })
-
+                    }
                 }
-                } 
             }
         }
 
@@ -137,6 +136,33 @@ module.exports = (router) => {
                         success: true,
                         blogs: blogs
                     });
+                }
+            }
+        })
+    })
+
+    router.get("/blogthumbnails/blog:id", (req, res) => {
+        Blog.findOne({
+            _id: req.params.id
+        }, (err, blog) => {
+            if (err){
+                res.json({
+                    success:false,
+                    message:err+" hey fix it"
+                });
+            }
+            else{
+                if(!blog){
+                    res.json({
+                        success:false,
+                        message:"blog is not found"
+                    });
+                }
+                else{
+                    res.json({
+                        success:true,
+                        blog:blog
+                    })
                 }
             }
         })

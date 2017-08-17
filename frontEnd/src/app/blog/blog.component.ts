@@ -25,6 +25,7 @@ export class BlogComponent implements OnInit {
 
       title: ['', Validators.compose([
         Validators.required,
+        
       ])],
 
       tags: ['', Validators.required],
@@ -46,7 +47,7 @@ export class BlogComponent implements OnInit {
     this.username = JSON.parse(this.auth.user);
     this.username = this.username.username;
     const blog = {
-      title: this.form.get("title").value,
+      title:this.form.get("title").value,
       tags: this.form.get("tags").value,
       summery: this.form.get("summery").value,
       thumbnail: this.form.get("thumbnail").value,
@@ -59,7 +60,6 @@ export class BlogComponent implements OnInit {
       if (!data.success) {
         this.message = data.message
         this.messageClass = "alert alert-danger"
-        console.log("blog failed")
 
       }
       else {

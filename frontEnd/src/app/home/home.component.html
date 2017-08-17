@@ -19,24 +19,19 @@
 
       </section>
     </header>
-
-
-
-
-
-
     <main>
       <section id="navitems">
 
         <ul>
-          <li><a href="#">#People</a></li>
-          <li><a href="#">#Corrporations</a></li>
-          <li><a href="#">#Politics</a></li>
-          <li><a href="#">#Education</a></li>
-          <li><a href="#">#Media</a></li>
-          <li><a href="#">#Celebrity</a></li>
-          <li><a href="#">#Music</a></li>
-          <li><a href="#">#Video</a></li>
+          <li (click) = "filterBy= 'all'"><a href="#">#All</a></li>
+          <li (click) = "filterBy= 'people'"><a href="#">#People</a></li>
+          <li (click) = "filterBy= 'Corrporations'"><a href="#">#Corrporations</a></li>
+          <li (click) = "filterBy= 'Politics'"><a href="#">#Politics</a></li>
+          <li (click) = "filterBy= 'Education'"><a href="#">#Education</a></li>
+          <li (click) = "filterBy= 'Media'"><a href="#">#Media</a></li>
+          <li (click) = "filterBy= 'Celebrity'"><a href="#">#Celebrity</a></li>
+          <li (click) = "filterBy= 'Music'"><a href="#">#Music</a></li>
+          <li (click) = "filterBy= 'Video'"><a href="#">#Video</a></li>
         </ul>
         <div id="line"></div>
       </section>
@@ -44,18 +39,18 @@
       <!--this is where the blogs go-->
 
       <section id="blogs">
-        <div class="blogitem" *ngFor="let blog of blogs">
-          <a ng-click="model1.read()">
+        <div class="blogitem" *ngFor="let blog of (blogs | filter:filterBy)">
+          <a [routerLink]="['/blog', blog._id]">
 					   <img src="http://www.fdhs.com/wp-content/uploads/2011/08/fdhs-5-31.jpg" alt="img1">
 					</a>
           <div class="peopleanddate">
             <h6>by {{blog.createdBy}}</h6>
             <p>{{blog.createdAt | date: "MM, dd yyyy"}}</p>
           </div>
-          <a href="#">
+          <a [routerLink]="['/blog', blog._id]">
             <h3>{{blog.title}}</h3>
           </a>
-          <a href="#">
+          <a [routerLink]="['/blog', blog._id]">
             <article>
               {{blog.summery}}
             </article>
@@ -91,12 +86,7 @@
         </div>
       </div>
     </main>
-    <footer>
-      <div id="first1">
-        <h2>Haters Clique</h2>
-      </div>
-      <p>© 2017, Hater. All Rights Reserved.</p>
-    </footer>
+    
   </div>
 
 </body>

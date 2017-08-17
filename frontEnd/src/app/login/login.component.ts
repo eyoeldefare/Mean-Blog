@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
+  
   onLoginSubmit() {
     const user = {
       username: this.form.get('username').value,
