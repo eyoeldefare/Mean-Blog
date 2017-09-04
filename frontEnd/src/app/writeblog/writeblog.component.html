@@ -1,3 +1,32 @@
-<div>
-  <iframe class="e2e-iframe-untrusted-src" [src]=""></iframe>
+
+<div class="top">
+  <div class="top-1">
+    <h1>{{title}}</h1>
+    <h6>contributor: <label for=""></label> {{createdBy}}</h6>
+    <label for="">{{date | date: "MM, dd yyyy"}}</label>
+  </div>
 </div>
+
+<hr style="margin:auto" width="97.8%">
+<section class="cover">
+  <div [innerHTML]="googledoc" class="col-sm-9"></div>
+</section>
+
+<!--<section class="cover-2">
+  <form [formGroup] = "form">
+    <div class="comments">
+      <h4>Comment</h4>
+      <textarea class="form-control" formControlName = "" placeholder="Message"></textarea>
+    </div>
+
+    <button (click) = "submitComment(blog._id)" class="btn btn-success" type="submit">Submit</button>
+    <button (click) = "cancel(blog._id)"  class="btn btn-secondary" type="submit">Cancel</button>
+  </form>
+
+
+</section>
+<ul class="list-group">
+  <li *ngFor="let comment of blog.comments" class="list-group-item">
+    <strong></strong>
+  </li>
+</ul>-->

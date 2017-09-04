@@ -7,7 +7,7 @@
   </button>
 
   <!--title-->
-  <a class="navbar-brand" routerLink="">Navbar</a>
+  <a class="navbar-brand" routerLink="">Dungur</a>
 
   <!--lists-->
   <div class="collapse navbar-collapse" id="navbarToggler">
@@ -17,20 +17,16 @@
       </li>
 
       <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-        <a class="nav-link" routerLink="recent"><i class="fa fa-eye" aria-hidden="true"></i>
+        <a class="nav-link" routerLink="recent"><i class="fa fa-diamond" aria-hidden="true"></i>
       Recent</a>
       </li>
-      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" class="nav-item">
-        <a class="nav-link" routerLink="blog"><i class="fa fa-edit" aria-hidden="true"></i>
-      Write</a>
-      </li>
-
+     
     </ul>
     <!--search-->
     <form [formGroup]='' class="form-inline my-2 my-lg-0">
 
       <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="search...">
-      <button id='searchButton' class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+      <button id='searchButton' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     <ul class="navbar-nav mt-2 mt-md-0">
       <li class="nav-item">

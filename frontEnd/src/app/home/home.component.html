@@ -1,92 +1,65 @@
-<body>
-  <script>
-
-
-  </script>
-  <div id="container">
-    <header>
-      <div id="headercontainer">
-      </div>
-      <section id="square">
-        <h1>Welcome to Haters Clique: A community of haters, by haters, for haters!</h1>
-        <p>We are haters and trolls who dream of changing the world one hate at a time!!!</p>
-        <div id="inputs">
-          <button data-toggle="modal" data-target=".bd-example-modal-lg">Subscribe</button>
-          <button *ngIf="!authService.loggedIn()" id="register"><a  [routerLink]="['/register']" style="color:black; text-decoration:none;">Register</a></button>
-          <button *ngIf="authService.loggedIn()" type=""><a  [routerLink]="['/blog']" style="color:black; text-decoration:none;">Write a blog</a></button>
-        </div>
-        <p>Register and start contributing to the hate</p>
-
-      </section>
-    </header>
-    <main>
-      <section id="navitems">
-
-        <ul>
-          <li (click) = "filterBy= 'all'"><a href="#">#All</a></li>
-          <li (click) = "filterBy= 'people'"><a href="#">#People</a></li>
-          <li (click) = "filterBy= 'Corrporations'"><a href="#">#Corrporations</a></li>
-          <li (click) = "filterBy= 'Politics'"><a href="#">#Politics</a></li>
-          <li (click) = "filterBy= 'Education'"><a href="#">#Education</a></li>
-          <li (click) = "filterBy= 'Media'"><a href="#">#Media</a></li>
-          <li (click) = "filterBy= 'Celebrity'"><a href="#">#Celebrity</a></li>
-          <li (click) = "filterBy= 'Music'"><a href="#">#Music</a></li>
-          <li (click) = "filterBy= 'Video'"><a href="#">#Video</a></li>
-        </ul>
-        <div id="line"></div>
-      </section>
-
-      <!--this is where the blogs go-->
-
-      <section id="blogs">
-        <div class="blogitem" *ngFor="let blog of (blogs | filter:filterBy)">
-          <a [routerLink]="['/blog', blog._id]">
-					   <img src="http://www.fdhs.com/wp-content/uploads/2011/08/fdhs-5-31.jpg" alt="img1">
-					</a>
-          <div class="peopleanddate">
-            <h6>by {{blog.createdBy}}</h6>
-            <p>{{blog.createdAt | date: "MM, dd yyyy"}}</p>
-          </div>
-          <a [routerLink]="['/blog', blog._id]">
-            <h3>{{blog.title}}</h3>
-          </a>
-          <a [routerLink]="['/blog', blog._id]">
-            <article>
-              {{blog.summery}}
-            </article>
-          </a>
-        </div>
-      </section>
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div style="height:10px;">
-              <h4 style="margin-left:10px; margin-top:13px;">Subscribe for Latest Blog</h4>
-              <hr>
-            </div>
-
-            <div style="height:50px; margin: 55px auto 55px auto; display:flex; align-items:center">
-
-              <div class="form-group col">
-                <p  style = "margin: 45px 0 0 0" class="show-hide-message col-12">{{message}}</p>
-                <form [formGroup]="form" (submit)="registerEmail()">
-
-                  <div style="display:flex;" class="col-12 col-md-12 col-sm-12">
-                    <input class="form-control" formControlName="email" type="email" placeholder="Email" id="example-email-input">
-                    <button type="submit">Subscribe</button>
-                  </div>
-                </form>
-
-
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-    
+<section id="stage">
+  <div id="stage-content">
+    <h1 class="display-3">Welcome to Dungur: Blog made fun</h1>
+    <p>If you like Programming, gaming, shows, and more, consider subscribing</p>
+    <button class="btn btn-lg btn-outline-danger" data-toggle="modal" data-target=".bd-example-modal-lg">Subscribe</button>
   </div>
+</section>
 
-</body>
+<section id="what-we-do">
+  <div class="section-container">
+    <div class="container">
+      <ul>
+        <li (click)="filterBy= 'all'"><a>All</a></li>
+        <li (click)="filterBy= 'education'"><a>Education</a></li>
+        <li (click)="filterBy= 'coding'"><a>Programming</a></li>
+        <li (click)="filterBy= 'comic'"><a>Movies</a></li>
+        <li (click)="filterBy= 'people'"><a>People</a></li>
+        <li (click)="filterBy= 'anime'"><a>Animes</a></li>
+        <li (click)="filterBy= 'tvshow'"><a>Tv Shows</a></li>
+      </ul>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card-group">
+            
+            <div class="card" *ngFor="let blog of (blogs | filter:filterBy)">
+              <div [routerLink]="['/blog', blog._id]" class="card-blog">
+                <h4 class="card-title">{{blog.title}}</h4>
+                <h6 class="card-subtitle">By {{blog.createdBy}}<label style="float:right">{{blog.createdAt | date: "MM, dd yyyy"}}</label></h6>
+                <img [src]="blog.thumbnail" alt="sunset">
+                <div class="card-block">
+                  <p class="card-text">{{blog.summery}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div style="height:50px;">
+          <h4 style="margin-left:10px; margin-top:13px;">Subscribe for the Latest Blogs</h4>
+          <hr>
+        </div>
+        <div style="height:70px; margin: 20px auto 75px auto; display:flex; align-items:center">
+          <div class="form-group col">
+            <p style="margin: 45px 0 0 0" class="show-hide-message col-12">{{message}}</p>
+            <form [formGroup]="form" (submit)="registerEmail()">
+              <div style="display:flex;" class="col-12 col-md-12 col-sm-12">
+                <input class="form-control" formControlName="email" type="email" placeholder="Email" id="example-email-input">
+                <button type="submit" class="btn btn-danger">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
