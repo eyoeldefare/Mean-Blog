@@ -1,9 +1,34 @@
-iframe {
-  height: 100vmax;
-  width: 100%;
+
+
+.top {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  padding: 13px;
 }
 
-div {
-  height: 100vmax;
-  width: 100%;
+.cover-2 {
+  margin: 20px 10px;
+}
+
+.comments {
+  margin: auto;
+}
+
+.comments>textarea {
+  min-width: 325px;
+  height: 100px;
+  width:45%;
+  margin: 10px 0;
+}
+
+.top-1>h6 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+
+@media screen and (max-width: 1009px) {
+  
 }

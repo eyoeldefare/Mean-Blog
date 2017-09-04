@@ -1,6 +1,7 @@
 const Blog = require('../Model/blog');
 const Data = require('../Mongo/mongoose')
 const jwt = require('jsonwebtoken');
+const User = require("../Model/user");
 
 module.exports = (router) => {
 
@@ -141,27 +142,89 @@ module.exports = (router) => {
         })
     })
 
+    router.post("/blogthumbnails/comment", (req, res) => {
+        if (!req.body.comment) {
+            res.json({
+                success: false,
+                message: "no comment"
+            })
+        } else {
+            if (!req.body.id) {
+                res.json({
+                    success: false,
+                    message: "no id"
+                })
+            } else {
+                Blog.findOne({
+                    _id: req.body.id
+                }, (err, blog) => {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            message: "No blog id"
+                        })
+                    } else {
+                        if (!blog) {
+                            res.json({
+                                success: false,
+                                message: "Blog not found"
+                            })
+                        } else {
+                           User.findOne({
+                               _id:req.decoded.userId
+                           }, (err,user)=>{
+                               if(err){
+                                res.json({success:false, message:err})
+                               }
+                               else{
+                                   if (!user){
+                                       res.json({success:false, message:"user not found"})
+                                   }
+                                   else{
+                                       blog.coments.push({
+                                           comment:req.body.comment,
+                                           name: user.username
+                                       });
+                                       blog.save((err)=>{
+                                           if (err){
+                                               res.json({success:false, message:"err saving blog"})
+ 
+                                           }
+                                           else{
+                                                res.json({success:true, message:"Saved"})
+                                           }
+                                       });
+                                   }
+
+                               }
+                               
+                           })
+                        }
+                    }
+                })
+            }
+        }
+    })
+
     router.get("/blogthumbnails/blog:id", (req, res) => {
         Blog.findOne({
             _id: req.params.id
         }, (err, blog) => {
-            if (err){
+            if (err) {
                 res.json({
-                    success:false,
-                    message:err+" hey fix it"
+                    success: false,
+                    message: err + " hey fix it"
                 });
-            }
-            else{
-                if(!blog){
+            } else {
+                if (!blog) {
                     res.json({
-                        success:false,
-                        message:"blog is not found"
+                        success: false,
+                        message: "blog is not found"
                     });
-                }
-                else{
+                } else {
                     res.json({
-                        success:true,
-                        blog:blog
+                        success: true,
+                        blog: blog
                     })
                 }
             }

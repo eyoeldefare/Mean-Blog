@@ -37,5 +37,11 @@ export class BlogService {
     return this.http.get(this.domain + '/blogs/blogthumbnails/blog'+id).map(res => res.json());
 
   }
+  comments(id, comment){
+    const commentAndid = {
+      id:id, comment:comment
+    }
+        return this.http.get(this.domain + '/blogs/blogthumbnails/comment', commentAndid).map(res => res.json());
+  }
 
 }

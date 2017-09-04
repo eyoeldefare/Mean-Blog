@@ -30,6 +30,10 @@ const blogSchema = new Schema({
   googledoc: {
     type: String,
   },
+  coments:[{
+    comment:{type:String},
+    name:{type:String}
+  }]
 });
 
 module.exports = mongoose.model('Blog', blogSchema);
