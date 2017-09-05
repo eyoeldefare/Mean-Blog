@@ -30,9 +30,9 @@ const blogSchema = new Schema({
   googledoc: {
     type: String,
   },
-  coments:[{
+  comments:[{
     comment:{type:String},
-    name:{type:String}
+    createdby:{type:String}
   }]
 });
 

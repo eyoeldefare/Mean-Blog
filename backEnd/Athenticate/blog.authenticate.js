@@ -143,16 +143,16 @@ module.exports = (router) => {
     })
 
     router.post("/blogthumbnails/comment", (req, res) => {
-        if (!req.body.comment) {
+        if (!req.body.id) {
             res.json({
                 success: false,
-                message: "no comment"
+                message: "no id"
             })
         } else {
-            if (!req.body.id) {
+            if (!req.body.comment) {
                 res.json({
                     success: false,
-                    message: "no id"
+                    message: "no comment"
                 })
             } else {
                 Blog.findOne({
@@ -181,9 +181,9 @@ module.exports = (router) => {
                                        res.json({success:false, message:"user not found"})
                                    }
                                    else{
-                                       blog.coments.push({
+                                       blog.comments.push({
                                            comment:req.body.comment,
-                                           name: user.username
+                                           createdby: user.username
                                        });
                                        blog.save((err)=>{
                                            if (err){

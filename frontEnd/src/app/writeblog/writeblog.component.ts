@@ -15,6 +15,7 @@ export class WriteblogComponent implements OnInit {
   createdBy: String;
   date;
   form;
+  blog_id;
   newComment = [];
 
   constructor(private bs: BlogService, private fb: FormBuilder, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
@@ -33,14 +34,15 @@ export class WriteblogComponent implements OnInit {
   submitComment(id) {
     const comment = this.form.get("comment").value;
     this.bs.comments(id,comment).subscribe(data =>{
-      const index = this.newComment.indexOf(id);
+      this.newComment = data;
+      console.log([id, comment])
       
     })
   }
 
   cancel(id) {
-    const index = this.newComment.indexOf(id);
-    this.newComment.slice(index, 1);
+    // const index = this.newComment.indexOf(id);
+    // this.newComment.slice(index, 1);
     this.form.reset();
   }
 
@@ -50,6 +52,8 @@ export class WriteblogComponent implements OnInit {
       this.createdBy = data.blog.createdBy;
       this.date = data.blog.createdAt;
       this.title = data.blog.title;
+      this.blog_id=data.blog._id;
+      console.log(this.blog_id)
     });
   }
 }
