@@ -1,32 +1,38 @@
-
-<div class="top">
-  <div class="top-1">
+<section class="top">
+  <div class="top-content">
     <h1>{{title}}</h1>
     <h6>contributor: <label for=""></label> {{createdBy}}</h6>
     <label for="">{{date | date: "MM, dd yyyy"}}</label>
   </div>
-</div>
+</section>
 
 <hr style="margin:auto" width="97.8%">
+
 <section id="cover">
-  <div [innerHTML]="googledoc" class="col-sm-9"></div>
+  <div [innerHTML]="googledoc" class="col-sm-10"></div>
 </section>
 
-<section class="cover-2">
-  <form [formGroup] = "form">
+<section id="cover-two">
+  <form [formGroup]="form">
     <div class="comments">
       <h4>Comment</h4>
-      <textarea class="form-control" formControllerName = "comment" placeholder="Message"></textarea>
+      <textarea class="form-control" formControlName="comment" placeholder="Message"></textarea>
     </div>
-
-    <button (click) = "submitComment(blog_id)" class="btn btn-success" type="submit">Submit</button>
-    <button (click) = "cancel(blog_id)"  class="btn btn-secondary" type="submit">Cancel</button>
+    <button (click)="submitComment(blog_id)" class="btn btn-success" type="submit">Submit</button>
+    <button (click)="cancel(blog_id)" class="btn btn-secondary" type="submit">Cancel</button>
   </form>
-
-
 </section>
-<ul class="list-group">
-  <li *ngFor="let comment of newComment" class="list-group-item">
-    <strong>{{comment}}</strong>
-  </li>
-</ul>
+
+<section id = "cover-three">
+  <ul class="list-group">
+    <li *ngFor="let comment of comments">
+      <div class="commentAnddate d-flex justify-content-between">
+        <h5>{{comment.createdby}}</h5>
+        <a>{{date | date: "MM, dd yyyy"}}</a>
+      </div>
+      <div class="col-sm-9">
+        {{comment.comment}}
+			</div>
+    </li>
+  </ul>
+</section>

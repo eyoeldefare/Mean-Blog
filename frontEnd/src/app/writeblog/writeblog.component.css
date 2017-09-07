@@ -7,28 +7,36 @@
   padding: 13px;
 }
 
-.cover-2 {
+#cover-two {
   margin: 25px 10px;
 }
-
-.comments {
-  margin: auto;
+#cover-three{
+  border: 1px solid #e0e2e5;
+  margin: 5px;
+  border-radius: 10px;
+}
+#cover-three h5{
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+#cover-three a{
+  font-size: 12px;
+}
+.commentAnddate{
+  padding: 13px;
 }
 
-.comments>textarea {
+textarea {
   min-width: 325px;
   height: 100px;
   width:45%;
   margin: 10px 0;
 }
 
-.top-1>h6 {
+.top-content>h6 {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 13px;
 }
 
-
-@media screen and (max-width: 1009px) {
-  
-}

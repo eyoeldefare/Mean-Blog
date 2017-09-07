@@ -16,7 +16,7 @@ export class WriteblogComponent implements OnInit {
   date;
   form;
   blog_id;
-  newComment = [];
+  comments;
 
   constructor(private bs: BlogService, private fb: FormBuilder, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.commentForm();
@@ -34,8 +34,7 @@ export class WriteblogComponent implements OnInit {
   submitComment(id) {
     const comment = this.form.get("comment").value;
     this.bs.comments(id,comment).subscribe(data =>{
-      this.newComment = data;
-      console.log([id, comment])
+      console.log(data)
       
     })
   }
@@ -53,7 +52,7 @@ export class WriteblogComponent implements OnInit {
       this.date = data.blog.createdAt;
       this.title = data.blog.title;
       this.blog_id=data.blog._id;
-      console.log(this.blog_id)
+      this.comments = data.blog.comments;
     });
   }
 }

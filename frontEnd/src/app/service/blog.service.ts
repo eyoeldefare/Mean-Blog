@@ -34,15 +34,16 @@ export class BlogService {
   }
   getEachblogs(id) {
 
-    return this.http.get(this.domain + '/blogs/blogthumbnails/blog'+id).map(res => res.json());
+    return this.http.get(this.domain + '/blogs/blogthumbnails/blog' + id).map(res => res.json());
 
   }
-  comments(id, comment){
+  comments(id, comment) {
+    this.createAuthenticationHeaders();
     const commentAndid = {
-      id:id, 
-      comment:comment
+      id: id,
+      comment: comment
     }
-        return this.http.post(this.domain + '/blogs/blogthumbnails/comment', commentAndid).map(res => res.json());
+    return this.http.post(this.domain + '/blogs/comment', commentAndid, this.options).map(res => res.json());
   }
 
 }

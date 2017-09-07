@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require("../Model/user");
 
 module.exports = (router) => {
-
+    //only for thumbnail
     router.use('/thumbnail', (req, res, next) => {
 
         const token = req.headers['authorization'];
@@ -27,6 +27,8 @@ module.exports = (router) => {
             });
         }
     });
+    
+
     router.post('/thumbnail', (req, res) => {
         if (!req.body.title) {
             res.json({
@@ -142,7 +144,59 @@ module.exports = (router) => {
         })
     })
 
-    router.post("/blogthumbnails/comment", (req, res) => {
+    router.get("/blogthumbnails/blog:id", (req, res) => {
+        Blog.findOne({
+            _id: req.params.id
+        }, (err, blog) => {
+            if (err) {
+                res.json({
+                    success: false,
+                    message: err + " hey fix it"
+                });
+            } else {
+                if (!blog) {
+                    res.json({
+                        success: false,
+                        message: "blog is not found"
+                    });
+                } else {
+                    res.json({
+                        success: true,
+                        blog: blog
+                    })
+                }
+            }
+        })
+    })
+
+    //only for comment only
+    router.use("/comment", (req, res, next)=>{
+        const token = req.headers['authorization'];
+        if(!token){
+            res.json({
+                success:false,
+                message: "NO token"
+
+            });
+
+        }
+        else{
+            jwt.verify(token, Data.secret, (err, decoded)=>{
+                if (err){
+                    res.json({
+                        success:false,
+                        message:"Please re-login to post a comment"
+                    });
+                }
+                else{
+                    req.decoded=decoded;
+                    next();
+                }
+            })
+        }
+    });
+
+    router.post("/comment", (req, res) => {
         if (!req.body.id) {
             res.json({
                 success: false,
@@ -172,9 +226,10 @@ module.exports = (router) => {
                         } else {
                            User.findOne({
                                _id:req.decoded.userId
+                               
                            }, (err,user)=>{
                                if(err){
-                                res.json({success:false, message:err})
+                                res.json({success:false, message:"Not found any Id"+err})
                                }
                                else{
                                    if (!user){
@@ -204,31 +259,6 @@ module.exports = (router) => {
                 })
             }
         }
-    })
-
-    router.get("/blogthumbnails/blog:id", (req, res) => {
-        Blog.findOne({
-            _id: req.params.id
-        }, (err, blog) => {
-            if (err) {
-                res.json({
-                    success: false,
-                    message: err + " hey fix it"
-                });
-            } else {
-                if (!blog) {
-                    res.json({
-                        success: false,
-                        message: "blog is not found"
-                    });
-                } else {
-                    res.json({
-                        success: true,
-                        blog: blog
-                    })
-                }
-            }
-        })
     })
     return router;
 }

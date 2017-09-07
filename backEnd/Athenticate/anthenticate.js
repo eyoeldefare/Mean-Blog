@@ -230,7 +230,7 @@ module.exports = (router) => {
                                 const token = jwt.sign({
                                     userId: user._id
                                 }, Data.secret, {
-                                    expiresIn: '24h'
+                                    expiresIn: '48h'
                                 });
                                 res.json({
                                     success: true,
