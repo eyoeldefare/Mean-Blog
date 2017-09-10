@@ -1,0 +1,18 @@
+<section>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-group">
+        <div class="card" *ngFor="let blog of blogs | search:getSearch()">
+          <div [routerLink]="['/blog', blog._id]" class="card-blog">
+            <h4 class="card-title">{{blog.title}}</h4>
+            <h6 class="card-subtitle">By {{blog.createdBy}}<label style="float:right">{{blog.createdAt | date: "MM, dd yyyy"}}</label></h6>
+            <img [src]="blog.thumbnail" alt="sunset">
+            <div class="card-block">
+              <p class="card-text">{{blog.summery}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

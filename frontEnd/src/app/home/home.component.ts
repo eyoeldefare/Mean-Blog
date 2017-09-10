@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit, OnChanges {
   getAllblogs() {
     this.bs.getAllblogs().subscribe(data => {
       this.blogs = data.blogs;
-      console.log(this.blogs)
     });
   }
 
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit, OnChanges {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(3),
         Validators.maxLength(30),
         this.validateEmail
       ])]

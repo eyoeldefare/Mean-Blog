@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Subject } from "rxjs/Subject";
 import 'rxjs/add/operator/map';
-
+import { Router } from "@angular/router";
 
 
 import { AuthenticateService } from './authenticate.service';
@@ -10,7 +11,9 @@ import { AuthenticateService } from './authenticate.service';
 export class BlogService {
   options;
   domain = this.auth.domain;
-  constructor(private auth: AuthenticateService, private http: Http) {
+  public searchSubject = new Subject<any>();
+
+  constructor(private router: Router, private auth: AuthenticateService, private http: Http) {
   }
 
   createAuthenticationHeaders() {
@@ -22,6 +25,7 @@ export class BlogService {
       })
     });
   }
+
 
   createBlog(blog) {
     this.createAuthenticationHeaders();
@@ -44,6 +48,10 @@ export class BlogService {
       comment: comment
     }
     return this.http.post(this.domain + '/blogs/comment', commentAndid, this.options).map(res => res.json());
+  }
+
+  addSearch(data){
+    this.searchSubject.next(data);
   }
 
 }

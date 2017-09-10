@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from "@angular/http";
 import { AppRoutingModule } from './app.routing.module'
 import { AppComponent } from './app.component';
@@ -20,6 +20,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { WriteblogComponent } from './writeblog/writeblog.component';
 import { FooterComponent } from './footer/footer.component';
 import { FilterPipe } from './service/filter.pipe';
+import { SearchPipe } from './service/search.pipe';
+import { SearchComponent } from './search/search.component';
  
 
 @NgModule({
@@ -35,13 +37,16 @@ import { FilterPipe } from './service/filter.pipe';
     PagenotfoundComponent,
     WriteblogComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    SearchPipe,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
+    FormsModule
   ],
   providers: [AuthenticateService, AuthGuard, NotauthGuard, BlogService,EmailService],
   bootstrap: [AppComponent]

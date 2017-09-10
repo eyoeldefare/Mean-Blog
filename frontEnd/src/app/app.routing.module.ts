@@ -10,6 +10,7 @@ import { NotauthGuard } from './authGuard/logout.auth'
 import { BlogComponent } from './blog/blog.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { WriteblogComponent } from './writeblog/writeblog.component';
+import { SearchComponent } from "./search/search.component";
 
 const appRoutes: Routes = [
   {
@@ -33,8 +34,13 @@ const appRoutes: Routes = [
 
   },
   {
-    path: "blog/:id",
-    component: WriteblogComponent
+    path:"search/:title",
+    component: SearchComponent
+  },
+
+  {
+    path: 'recent',
+    component: RecentComponent
   },
 
   {
@@ -42,13 +48,14 @@ const appRoutes: Routes = [
     component: PopularComponent
   },
   {
+    path: "blog/:id",
+    component: WriteblogComponent
+  },
+  {
     path: "",
     component: HomeComponent
   },
-  {
-    path: 'recent',
-    component: RecentComponent
-  },
+  
   {
     path: "**",
     component: PagenotfoundComponent

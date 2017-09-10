@@ -39,11 +39,10 @@ export class WriteblogComponent implements OnInit {
     })
   }
 
-  cancel(id) {
-    // const index = this.newComment.indexOf(id);
-    // this.newComment.slice(index, 1);
-    this.form.reset();
-  }
+  // cancel(id) {
+    
+  //   this.form.reset();
+  // }
 
   getEachblogs() {
     this.bs.getEachblogs(this.route.snapshot.params['id']).subscribe(data => {

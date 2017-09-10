@@ -13,10 +13,10 @@
         <li (click)="filterBy= 'all'"><a>All</a></li>
         <li (click)="filterBy= 'education'"><a>Education</a></li>
         <li (click)="filterBy= 'coding'"><a>Programming</a></li>
-        <li (click)="filterBy= 'comic'"><a>Movies</a></li>
+        <li (click)="filterBy= 'movies'"><a>Movies</a></li>
         <li (click)="filterBy= 'people'"><a>People</a></li>
-        <li (click)="filterBy= 'anime'"><a>Animes</a></li>
-        <li (click)="filterBy= 'tvshow'"><a>Tv Shows</a></li>
+        <li (click)="filterBy= 'animes'"><a>Animes</a></li>
+        <li (click)="filterBy= 'shows'"><a>Shows</a></li>
       </ul>
       <div class="row">
         <div class="col-sm-12">
@@ -26,7 +26,7 @@
               <div [routerLink]="['/blog', blog._id]" class="card-blog">
                 <h4 class="card-title">{{blog.title}}</h4>
                 <h6 class="card-subtitle">By {{blog.createdBy}}<label style="float:right">{{blog.createdAt | date: "MM, dd yyyy"}}</label></h6>
-                <img [src]="blog.thumbnail" alt="sunset">
+                <img [src]="blog.thumbnail" alt="sunset" id="card-image">
                 <div class="card-block">
                   <p class="card-text">{{blog.summery}}</p>
                 </div>
