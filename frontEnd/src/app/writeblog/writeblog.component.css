@@ -1,5 +1,3 @@
-
-
 .top {
   display: flex;
   flex-direction: column;
@@ -10,27 +8,30 @@
 #cover-two {
   margin: 25px 10px;
 }
-#cover-three{
+
+#cover-three {
   border: 1px solid #e0e2e5;
-  margin: 5px;
   border-radius: 10px;
 }
-#cover-three h5{
+
+.commentAnddate>a {
+  font-size: 11px;
+  padding: 0 10px;
+}
+.comment{
+  padding:0 auto 10px 0;
+}
+
+.commentAnddate>h5 {
+  padding: 0 13px;
   font-size: 16px;
   font-weight: bold;
-  text-transform: uppercase;
-}
-#cover-three a{
-  font-size: 12px;
-}
-.commentAnddate{
-  padding: 13px;
 }
 
 textarea {
   min-width: 325px;
   height: 100px;
-  width:45%;
+  width: 45%;
   margin: 10px 0;
 }
 
@@ -39,4 +40,3 @@ textarea {
   font-weight: bold;
   font-size: 13px;
 }
-

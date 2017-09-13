@@ -7,8 +7,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  blogs;
-  result;
+  blogs:Array<String>;
+  result:String;
   constructor(private bs: BlogService, private route: ActivatedRoute) {
 
 

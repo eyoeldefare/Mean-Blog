@@ -9,7 +9,7 @@ import { BlogService } from "../service/blog.service";
 })
 
 export class NavbarComponent implements OnInit {
-  title;
+  title:String;
   constructor(private as: AuthenticateService, private router: Router, private bs: BlogService) { }
 
   ngOnInit() {
@@ -18,9 +18,6 @@ export class NavbarComponent implements OnInit {
   searchSubmit(title){
     this.bs.addSearch(title);
   }
-
-
-
   onLogoutClick() {
     this.as.logout();
     this.router.navigate([''])

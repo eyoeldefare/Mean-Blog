@@ -9,10 +9,10 @@ import { Router } from "@angular/router";
   styleUrls: ['./blog.component.css']
 })
 export class BlogComponent implements OnInit {
-  form;
-  message;
-  username;
-  messageClass;
+  form:FormGroup;
+  message:String;
+  username:any;
+  messageClass:String;
   constructor(private fb: FormBuilder, private route: Router, private blogservice: BlogService, private auth: AuthenticateService) {
     this.blogForm();
   }

@@ -15,12 +15,12 @@ function matchingPasswords(c: AbstractControl) {
 
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  message;
-  messageClass;
-  emailValid;
-  emailMessage;
-  usernameValid;
-  usernameMessage;
+  message:String;
+  messageClass:String;
+  emailValid:Boolean;
+  emailMessage:String;
+  usernameValid:Boolean;
+  usernameMessage:String;
   constructor(private fb: FormBuilder, private as: AuthenticateService, private router: Router) {
     this.createForm()
   }

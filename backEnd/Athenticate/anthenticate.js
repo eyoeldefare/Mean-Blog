@@ -9,22 +9,24 @@ module.exports = (router) => {
             res.json({
                 success: false,
                 message: 'Please enter an e-mail'
-            }); // Function to store user's data in client local storage
+            }); 
 
         } else {
-
+            //username
             if (!req.body.username) {
                 res.json({
                     success: false,
                     message: 'Please enter a username'
                 });
             } else {
+                //password
                 if (!req.body.password) {
                     res.json({
                         success: false,
                         message: 'Please enter a password'
                     });
                 } else {
+                    //firstname
                     if (!req.body.firstname) {
                         res.json({
                             success: false,
@@ -32,6 +34,7 @@ module.exports = (router) => {
                         });
 
                     } else {
+                        //lastname
                         if (!req.body.lastname) {
                             res.json({
                                 success: false,
@@ -58,6 +61,7 @@ module.exports = (router) => {
                                             message: 'Username or e-mail already exists'
                                         });
                                     } else {
+                                        //check errors
                                         if (err.errors) {
                                             if (err.errors.email) {
                                                 res.json({
@@ -131,10 +135,11 @@ module.exports = (router) => {
                 message: 'E-mail was not provided'
             });
         } else {
-
+            //looking in user database
             User.findOne({
                 email: req.params.email
             }, (err, user) => {
+                //catch errors
                 if (err) {
                     res.json({
                         success: false,
@@ -165,6 +170,7 @@ module.exports = (router) => {
                 message: 'Username was not provided'
             });
         } else {
+            //check in user db
             User.findOne({
                 username: req.params.username
             }, (err, user) => {

@@ -28,11 +28,12 @@
     <li *ngFor="let comment of comments">
       <div class="commentAnddate d-flex justify-content-between">
         <h5>{{comment.createdby}}</h5>
-        <a>{{date | date: "MM, dd yyyy"}}</a>
+        <a>{{comment.time | date:"yMMMd"}}</a>
       </div>
-      <div class="col-sm-9">
-        {{comment.comment}}
+      <div class="comment col-sm-8">
+        {{comment.comment }}
 			</div>
     </li>
+    
   </ul>
 </section>

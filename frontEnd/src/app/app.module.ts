@@ -22,6 +22,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FilterPipe } from './service/filter.pipe';
 import { SearchPipe } from './service/search.pipe';
 import { SearchComponent } from './search/search.component';
+import { PopularPipe } from './service/popular.pipe';
+import { RecentPipe } from './service/recent.pipe';
  
 
 @NgModule({
@@ -39,7 +41,9 @@ import { SearchComponent } from './search/search.component';
     FooterComponent,
     FilterPipe,
     SearchPipe,
-    SearchComponent
+    SearchComponent,
+    PopularPipe,
+    RecentPipe
   ],
   imports: [
     BrowserModule,

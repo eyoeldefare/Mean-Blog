@@ -12,7 +12,7 @@ import { EmailService } from '../service/email.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnChanges {
-  blogs: any;
+  blogs: Array<String>;
   messageClass: String;
   message: String;
   form: FormGroup;
@@ -65,6 +65,9 @@ export class HomeComponent implements OnInit, OnChanges {
       } else {
         this.messageClass = 'green';
         this.message = data.message;
+       setTimeout(() => {
+          this.form.reset();
+        }, 4000);
       }
     });
   }

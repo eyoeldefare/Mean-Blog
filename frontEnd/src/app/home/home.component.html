@@ -12,23 +12,27 @@
       <ul>
         <li (click)="filterBy= 'all'"><a>All</a></li>
         <li (click)="filterBy= 'education'"><a>Education</a></li>
-        <li (click)="filterBy= 'coding'"><a>Programming</a></li>
+        <li (click)="filterBy= 'programming'"><a>Programming</a></li>
         <li (click)="filterBy= 'movies'"><a>Movies</a></li>
         <li (click)="filterBy= 'people'"><a>People</a></li>
-        <li (click)="filterBy= 'animes'"><a>Animes</a></li>
+        <li (click)="filterBy= 'comics'"><a>Comics</a></li>
         <li (click)="filterBy= 'shows'"><a>Shows</a></li>
       </ul>
       <div class="row">
         <div class="col-sm-12">
           <div class="card-group">
-            
+
             <div class="card" *ngFor="let blog of (blogs | filter:filterBy)">
               <div [routerLink]="['/blog', blog._id]" class="card-blog">
-                <h4 class="card-title">{{blog.title}}</h4>
-                <h6 class="card-subtitle">By {{blog.createdBy}}<label style="float:right">{{blog.createdAt | date: "MM, dd yyyy"}}</label></h6>
                 <img [src]="blog.thumbnail" alt="sunset" id="card-image">
                 <div class="card-block">
+                  <h4 class="card-title">{{blog.title}}</h4>
                   <p class="card-text">{{blog.summery}}</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text"><small class="text-muted">Last updated {{blog.createdAt | date: "jm"}}</small></p>
+                    <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -44,17 +48,17 @@
   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div style="height:50px;">
+        <div height="50px">
           <h4 style="margin-left:10px; margin-top:13px;">Subscribe for the Latest Blogs</h4>
           <hr>
         </div>
         <div style="height:70px; margin: 20px auto 75px auto; display:flex; align-items:center">
           <div class="form-group col">
-            <p style="margin: 45px 0 0 0" class="show-hide-message col-12">{{message}}</p>
+            <p style="margin: 45px 0 0 5px" [ngStyle]="{'color': messageClass}" class="show-hide-message col-sm-12">{{message}}</p>
             <form [formGroup]="form" (submit)="registerEmail()">
-              <div style="display:flex;" class="col-12 col-md-12 col-sm-12">
-                <input class="form-control" formControlName="email" type="email" placeholder="Email" id="example-email-input">
-                <button type="submit" class="btn btn-danger">Subscribe</button>
+              <div class="col-sm-12 d-flex">
+                <input class="form-control email-input" formControlName="email" type="email" placeholder="Email" id="email-input">
+                <button type="submit" class="btn btn-success">Subscribe</button>
               </div>
             </form>
           </div>

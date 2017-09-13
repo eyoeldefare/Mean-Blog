@@ -16,8 +16,8 @@ const blogSchema = new Schema({
    
   },
   createdAt: {
-    type: String,
-    default: Date.now()
+    type: Date,
+    default: new Date()
   },
   thumbnail:{
     type: String,
@@ -32,7 +32,8 @@ const blogSchema = new Schema({
   },
   comments:[{
     comment:{type:String},
-    createdby:{type:String}
+    createdby:{type:String},
+    time:{type:Date, default: new Date()}
   }]
 });
 

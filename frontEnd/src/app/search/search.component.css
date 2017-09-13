@@ -1,18 +1,16 @@
+.card-block {
+  padding: 5px 0;
+  font-size: 15px;
+}
 img {
   max-width: 100%;
 }
+
 .card-group {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
 }
-h6 {
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.69rem;
-  letter-spacing: 0.1rem;
-}
-
 .card {
   margin: 5px;
   width: 33.3333333%;
@@ -23,8 +21,4 @@ h6 {
 }
 .card-blog{
 	cursor: pointer;
-}
-.card-block {
-  padding: 5px 0;
-  font-size: 15px;
 }

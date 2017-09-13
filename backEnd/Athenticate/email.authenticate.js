@@ -3,7 +3,7 @@ const Email = require('../Model/email');
 
 module.exports = (router) => {
 
-
+    // email/reg
     router.post("/reg", (req, res) => {
         if (!req.body.email) {
             res.json({
@@ -20,7 +20,7 @@ module.exports = (router) => {
                     if (err.code === 11000) {
                         res.json({
                             success: false,
-                            message: 'e-mail already exists'
+                            message: 'E-mail already exists'
                         });
                     } else {
                         if (err.errors) {
@@ -49,7 +49,7 @@ module.exports = (router) => {
                 else {
                     res.json({
                         success: true,
-                        message: "email registered"
+                        message: "Cool, email registered"
                     });
                 }
 

@@ -9,14 +9,13 @@ import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms"
   styleUrls: ['./writeblog.component.css']
 })
 export class WriteblogComponent implements OnInit {
-  id: any;
   googledoc: any;
   title: String;
   createdBy: String;
-  date;
-  form;
-  blog_id;
-  comments;
+  date: Date;
+  form: FormGroup;
+  blog_id: any;
+  comments: String;
 
   constructor(private bs: BlogService, private fb: FormBuilder, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.commentForm();
@@ -33,16 +32,18 @@ export class WriteblogComponent implements OnInit {
   }
   submitComment(id) {
     const comment = this.form.get("comment").value;
-    this.bs.comments(id,comment).subscribe(data =>{
+    this.bs.comments(id, comment).subscribe(data => {
       console.log(data)
-      
+      setTimeout(() => {
+        this.form.reset()
+      }, 4000);
     })
   }
 
-  // cancel(id) {
-    
-  //   this.form.reset();
-  // }
+  cancel(id) {
+
+    this.form.reset();
+  }
 
   getEachblogs() {
     this.bs.getEachblogs(this.route.snapshot.params['id']).subscribe(data => {
@@ -50,7 +51,7 @@ export class WriteblogComponent implements OnInit {
       this.createdBy = data.blog.createdBy;
       this.date = data.blog.createdAt;
       this.title = data.blog.title;
-      this.blog_id=data.blog._id;
+      this.blog_id = data.blog._id;
       this.comments = data.blog.comments;
     });
   }

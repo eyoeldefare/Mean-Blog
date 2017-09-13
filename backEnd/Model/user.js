@@ -3,18 +3,6 @@ mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
 
-let emailLengthChecker = (email) => {
-  if (!email) {
-    return false;
-  } else {
-    if (email.length < 5 || email.length > 30) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-};
-
 let validEmailChecker = (email) => {
   if (!email) {
     return false;
@@ -24,10 +12,7 @@ let validEmailChecker = (email) => {
   }
 };
 
-const emailValidators = [{
-    validator: emailLengthChecker,
-    message: 'E-mail must be at least 5 characters but no more than 30'
-  },
+const emailValidators = [
   {
     validator: validEmailChecker,
     message: 'Must be a valid e-mail'
@@ -38,7 +23,7 @@ let usernameLengthChecker = (username) => {
   if (!username) {
     return false;
   } else {
-    if (username.length < 3 || username.length > 15) {
+    if (username.length < 3 || username.length > 20) {
       return false;
     } else {
       return true;
@@ -72,7 +57,7 @@ let passwordLengthChecker = (password) => {
   if (!password) {
     return false;
   } else {
-    if (password.length < 8 || password.length > 20) {
+    if (password.length < 7 || password.length > 20) {
       return false;
     } else {
       return true;
@@ -84,18 +69,18 @@ let validPassword = (password) => {
   if (!password) {
     return false;
   } else {
-    const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
+    const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{7,20}$/);
     return regExp.test(password);
   }
 };
 
 const passwordValidators = [{
     validator: passwordLengthChecker,
-    message: 'Password must be at least 8 characters'
+    message: 'Password must be at least 7 characters'
   },
   {
     validator: validPassword,
-    message: 'Must have at least one uppercase, lowercase, special character, and number'
+    message: 'Must have at least one uppercase, lowercase, special character (!@#\$%\^&\*), and a number'
   }
 ];
 

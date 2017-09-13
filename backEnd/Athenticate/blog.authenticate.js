@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require("../Model/user");
 
 module.exports = (router) => {
-    //only for thumbnail
+    //only for thumbnail blogs
     router.use('/thumbnail', (req, res, next) => {
 
         const token = req.headers['authorization'];
@@ -169,23 +169,21 @@ module.exports = (router) => {
         })
     })
 
-    //only for comment only
+    //only for comments only
     router.use("/comment", (req, res, next)=>{
         const token = req.headers['authorization'];
         if(!token){
             res.json({
                 success:false,
                 message: "NO token"
-
             });
-
         }
         else{
             jwt.verify(token, Data.secret, (err, decoded)=>{
                 if (err){
                     res.json({
                         success:false,
-                        message:"Please re-login to post a comment"
+                        message:"Please re-login to post a comment", err
                     });
                 }
                 else{
@@ -195,7 +193,6 @@ module.exports = (router) => {
             })
         }
     });
-
     router.post("/comment", (req, res) => {
         if (!req.body.id) {
             res.json({
@@ -206,7 +203,7 @@ module.exports = (router) => {
             if (!req.body.comment) {
                 res.json({
                     success: false,
-                    message: "no comment"
+                    message: "no comment or time"
                 })
             } else {
                 Blog.findOne({
@@ -238,12 +235,12 @@ module.exports = (router) => {
                                    else{
                                        blog.comments.push({
                                            comment:req.body.comment,
+                                           time:req.body.time,
                                            createdby: user.username
                                        });
                                        blog.save((err)=>{
                                            if (err){
                                                res.json({success:false, message:"err saving blog"})
- 
                                            }
                                            else{
                                                 res.json({success:true, message:"Saved"})

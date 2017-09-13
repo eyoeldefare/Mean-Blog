@@ -3,19 +3,6 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const Schema = mongoose.Schema;
 
-
-let emailLengthChecker = (email) => {
-  if (!email) {
-    return false;
-  } else {
-    if (email.length < 5 || email.length > 30) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-};
-
 let validEmailChecker = (email) => {
   if (!email) {
     return false;
@@ -25,10 +12,7 @@ let validEmailChecker = (email) => {
   }
 };
 
-const emailValidators = [{
-    validator: emailLengthChecker,
-    message: 'E-mail must be at least 5 characters but no more than 30'
-  },
+const emailValidators = [
   {
     validator: validEmailChecker,
     message: 'Must be a valid e-mail'

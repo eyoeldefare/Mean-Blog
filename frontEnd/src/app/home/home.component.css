@@ -18,6 +18,12 @@ h6 {
   font-size: 0.69rem;
   letter-spacing: 0.1rem;
 }
+.email-input{
+  padding: 10px;
+  margin: auto 5px;
+  background-color: #fbffef;
+  
+}
 
 img {
   max-width: 100%;
