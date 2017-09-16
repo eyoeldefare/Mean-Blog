@@ -1,9 +1,10 @@
-<section>
+<section *ngIf="getSearch()" >
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div class="card-group">
           <div class="card" *ngFor="let blog of blogs | search:getSearch()">
+            <div *ngIf="blog" > 
             <div [routerLink]="['/blog', blog._id]" class="card-blog">
               <img [src]="blog.thumbnail" alt="image" id="card-image">
               <div class="card-block">
@@ -13,9 +14,11 @@
                   <p class="card-text"><small class="text-muted">Last updated {{blog.createdAt | date: "MM, dd yyyy"}}</small></p>
                   <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
                 </div>
-
               </div>
             </div>
+
+          </div>
+
           </div>
 
         </div>
@@ -24,4 +27,8 @@
 
   </div>
 
+</section>
+<section>
+  <div>Sorry message is not found
+  </div>
 </section>

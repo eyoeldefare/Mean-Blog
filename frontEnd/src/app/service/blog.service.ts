@@ -47,7 +47,7 @@ export class BlogService {
       id: id,
       comment: comment
     }
-    return this.http.post(this.domain + '/blogs/comment', commentAndid, this.options).map(res => res.json());
+    return this.http.put(this.domain + '/blogs/thumbnail', commentAndid, this.options).map(res => res.json());
   }
 
   addSearch(data){

@@ -7,8 +7,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  blogs:Array<String>;
-  result:String;
+  blogs: Array<String>;
+  result: String;
   constructor(private bs: BlogService, private route: ActivatedRoute) {
 
 
@@ -27,12 +27,7 @@ export class SearchComponent implements OnInit {
     this.result = this.route.snapshot.params['title'];
     this.bs.searchSubject.subscribe(data => {
       this.result = data;
-      return this.result
     });
-    return this.result
-
-
+    return this.result;
   }
-
-
 }

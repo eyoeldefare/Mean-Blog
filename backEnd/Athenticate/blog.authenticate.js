@@ -27,7 +27,7 @@ module.exports = (router) => {
             });
         }
     });
-    
+
 
     router.post('/thumbnail', (req, res) => {
         if (!req.body.title) {
@@ -97,9 +97,6 @@ module.exports = (router) => {
                                             }
 
                                         }
-
-
-
                                     }
                                 }
                                 res.json({
@@ -151,7 +148,7 @@ module.exports = (router) => {
             if (err) {
                 res.json({
                     success: false,
-                    message: err + " hey fix it"
+                    message: err
                 });
             } else {
                 if (!blog) {
@@ -169,41 +166,18 @@ module.exports = (router) => {
         })
     })
 
-    //only for comments only
-    router.use("/comment", (req, res, next)=>{
-        const token = req.headers['authorization'];
-        if(!token){
-            res.json({
-                success:false,
-                message: "NO token"
-            });
-        }
-        else{
-            jwt.verify(token, Data.secret, (err, decoded)=>{
-                if (err){
-                    res.json({
-                        success:false,
-                        message:"Please re-login to post a comment", err
-                    });
-                }
-                else{
-                    req.decoded=decoded;
-                    next();
-                }
-            })
-        }
-    });
-    router.post("/comment", (req, res) => {
+    router.put("/thumbnail", (req, res) => {
         if (!req.body.id) {
             res.json({
                 success: false,
-                message: "no id"
+                message: "id not found"
             })
+
         } else {
             if (!req.body.comment) {
                 res.json({
                     success: false,
-                    message: "no comment or time"
+                    message: "comment not found"
                 })
             } else {
                 Blog.findOne({
@@ -212,45 +186,53 @@ module.exports = (router) => {
                     if (err) {
                         res.json({
                             success: false,
-                            message: "No blog id"
+                            message: "id not found"
+
                         })
                     } else {
                         if (!blog) {
                             res.json({
                                 success: false,
-                                message: "Blog not found"
+                                message: "blog not found"
                             })
                         } else {
-                           User.findOne({
-                               _id:req.decoded.userId
-                               
-                           }, (err,user)=>{
-                               if(err){
-                                res.json({success:false, message:"Not found any Id"+err})
-                               }
-                               else{
-                                   if (!user){
-                                       res.json({success:false, message:"user not found"})
-                                   }
-                                   else{
-                                       blog.comments.push({
-                                           comment:req.body.comment,
-                                           time:req.body.time,
-                                           createdby: user.username
-                                       });
-                                       blog.save((err)=>{
-                                           if (err){
-                                               res.json({success:false, message:"err saving blog"})
-                                           }
-                                           else{
-                                                res.json({success:true, message:"Saved"})
-                                           }
-                                       });
-                                   }
+                            User.findOne({
+                                _id: req.decoded.userId
+                            }, (err, user) => {
+                                if (err) {
+                                    rers.json({
+                                        success: false,
+                                        message: "No user was found"
+                                    })
+                                } else {
+                                    if (!user) {
+                                        res.json({
+                                            success: false,
+                                            message: "user not found"
+                                        })
+                                    } else {
+                                        blog.comments.push({
+                                            comment: req.body.comment,
+                                            time: req.body.time,
+                                            createdby: user.username
+                                        });
+                                        blog.save((err) => {
+                                            if (err) {
+                                                res.json({
+                                                    success: false,
+                                                    message: "not able to save blog"
+                                                })
 
-                               }
-                               
-                           })
+                                            } else {
+                                                res.json({
+                                                    success: true,
+                                                    message: "Saved"
+                                                })
+                                            }
+                                        })
+                                    }
+                                }
+                            })
                         }
                     }
                 })
