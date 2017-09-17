@@ -16,6 +16,8 @@ export class WriteblogComponent implements OnInit {
   form: FormGroup;
   blog_id: any;
   comments: String;
+  message: String;
+  messageClass: String;
 
   constructor(private bs: BlogService, private fb: FormBuilder, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.commentForm();
@@ -32,11 +34,23 @@ export class WriteblogComponent implements OnInit {
   }
   submitComment(id) {
     const comment = this.form.get("comment").value;
-    this.bs.comments(id, comment).subscribe(data => {
-      console.log(data)
-      setTimeout(() => {
-        this.form.reset()
-      }, 4000);
+    var time = (new Date()).toUTCString();
+    this.bs.comments(id, comment, time).subscribe(data => {
+
+      if (!data.success) {
+        this.messageClass = 'alert alert-danger';
+        this.message = data.message;
+        this.form.reset();
+      }
+      else {
+        this.messageClass = 'alert alert-success';
+        this.message = data.message;
+        setTimeout(() => {
+          this.form.reset();
+        }, 4000);
+      }
+
+
     })
   }
 

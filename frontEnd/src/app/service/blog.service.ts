@@ -41,11 +41,12 @@ export class BlogService {
     return this.http.get(this.domain + '/blogs/blogthumbnails/blog' + id).map(res => res.json());
 
   }
-  comments(id, comment) {
+  comments(id, comment,time) {
     this.createAuthenticationHeaders();
     const commentAndid = {
       id: id,
-      comment: comment
+      comment: comment,
+      time:time
     }
     return this.http.put(this.domain + '/blogs/thumbnail', commentAndid, this.options).map(res => res.json());
   }

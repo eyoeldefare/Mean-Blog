@@ -15,6 +15,9 @@
 <section id="cover-two">
   <form [formGroup]="form">
     <div class="comments">
+      <div id="comment-message" [ngClass]="messageClass">
+        {{message}}
+      </div>
       <h4>Comment</h4>
       <textarea class="form-control" formControlName="comment" placeholder="Message"></textarea>
     </div>
@@ -22,7 +25,7 @@
     <button (click)="cancel(blog_id)" class="btn btn-secondary" type="submit">Cancel</button>
   </form>
 </section>
-<section id = "cover-three">
+<section id="cover-three">
   <ul class="list-group">
     <li *ngFor="let comment of comments">
       <div class="commentAnddate d-flex justify-content-between">
@@ -31,8 +34,8 @@
       </div>
       <div class="comment col-sm-8">
         {{comment.comment }}
-			</div>
+      </div>
     </li>
-    
+
   </ul>
 </section>

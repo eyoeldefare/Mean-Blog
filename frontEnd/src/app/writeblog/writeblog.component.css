@@ -18,8 +18,9 @@
   font-size: 11px;
   padding: 0 10px;
 }
-.comment{
-  padding:0 auto 10px 0;
+
+.comment {
+  padding: 0 auto 10px 0;
 }
 
 .commentAnddate>h5 {
@@ -39,4 +40,9 @@ textarea {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 13px;
+}
+
+#comment-message {
+  min-width: 325px;
+  width: 45%;
 }

@@ -18,7 +18,7 @@ module.exports = (router) => {
                 if (err) {
                     res.json({
                         success: false,
-                        message: "Please re-login to post a blog"
+                        message: "Please login to comment"
                     });
                 } else {
                     req.decoded = decoded;
@@ -177,7 +177,7 @@ module.exports = (router) => {
             if (!req.body.comment) {
                 res.json({
                     success: false,
-                    message: "comment not found"
+                    message: "Enter a comment"
                 })
             } else {
                 Blog.findOne({
@@ -222,11 +222,10 @@ module.exports = (router) => {
                                                     success: false,
                                                     message: "not able to save blog"
                                                 })
-
                                             } else {
                                                 res.json({
                                                     success: true,
-                                                    message: "Saved"
+                                                    message: "Comment submitted"
                                                 })
                                             }
                                         })
