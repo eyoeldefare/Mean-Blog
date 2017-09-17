@@ -2,7 +2,7 @@
   <div class="top-content">
     <h1>{{title}}</h1>
     <h6>contributor: <label for=""></label> {{createdBy}}</h6>
-    <label for="">{{date | date: "MM, dd yyyy"}}</label>
+    <label for="">{{date | date}}</label>
   </div>
 </section>
 
@@ -22,13 +22,12 @@
     <button (click)="cancel(blog_id)" class="btn btn-secondary" type="submit">Cancel</button>
   </form>
 </section>
-
 <section id = "cover-three">
   <ul class="list-group">
     <li *ngFor="let comment of comments">
       <div class="commentAnddate d-flex justify-content-between">
         <h5>{{comment.createdby}}</h5>
-        <a>{{comment.time | date:"yMMMd"}}</a>
+        <a>{{comment.time | amTimeAgo:true}} ago</a>
       </div>
       <div class="comment col-sm-8">
         {{comment.comment }}

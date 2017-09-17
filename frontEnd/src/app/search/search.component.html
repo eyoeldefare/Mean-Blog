@@ -1,34 +1,29 @@
-<section *ngIf="getSearch()" >
+<section>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div class="card-group">
           <div class="card" *ngFor="let blog of blogs | search:getSearch()">
-            <div *ngIf="blog" > 
             <div [routerLink]="['/blog', blog._id]" class="card-blog">
-              <img [src]="blog.thumbnail" alt="image" id="card-image">
-              <div class="card-block">
-                <h4 class="card-title">{{blog.title}}</h4>
-                <p class="card-text">{{blog.summery}}</p>
-                <div class="d-flex justify-content-between">
-                  <p class="card-text"><small class="text-muted">Last updated {{blog.createdAt | date: "MM, dd yyyy"}}</small></p>
-                  <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
+                <img [src]="blog.thumbnail" alt="image" id="card-image">
+                <div class="card-block">
+                  <h4 class="card-title">{{blog.title}}</h4>
+                  <p class="card-text">{{blog.summery}}</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="card-text"><small class="text-muted">Posted {{blog.createdAt | date}}</small></p>
+                    <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
+                  </div>
                 </div>
               </div>
-            </div>
-
           </div>
-
-          </div>
-
         </div>
       </div>
     </div>
-
   </div>
-
 </section>
+
 <section>
-  <div>Sorry message is not found
+  <div *ngIf="getSearch()===undefined || getSearch()==='undefined' || getSearch()===''">
+   <p>Search not found!</p>
   </div>
 </section>

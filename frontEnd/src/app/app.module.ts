@@ -24,7 +24,8 @@ import { SearchPipe } from './service/search.pipe';
 import { SearchComponent } from './search/search.component';
 import { PopularPipe } from './service/popular.pipe';
 import { RecentPipe } from './service/recent.pipe';
- 
+import { MomentModule } from "angular2-moment";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -50,9 +51,10 @@ import { RecentPipe } from './service/recent.pipe';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    MomentModule
   ],
-  providers: [AuthenticateService, AuthGuard, NotauthGuard, BlogService,EmailService],
+  providers: [AuthenticateService, AuthGuard, NotauthGuard, BlogService,EmailService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

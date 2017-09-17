@@ -17,7 +17,7 @@ const blogSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: new Date()
+    default: (new Date()).toUTCString()
   },
   thumbnail:{
     type: String,
@@ -33,7 +33,7 @@ const blogSchema = new Schema({
   comments:[{
     comment:{type:String},
     createdby:{type:String},
-    time:{type:Date, default: new Date()}
+    time:{type:Date, default: (new Date()).toUTCString()}
   }]
 });
 
