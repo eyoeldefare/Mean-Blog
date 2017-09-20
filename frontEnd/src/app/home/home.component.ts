@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit, OnChanges {
   messageClass: String;
   message: String;
   form: FormGroup;
-  @Input() filterBy?: string = "all";
+  @Input() filterBy?: String = "all";
 
   constructor(
     private bs: BlogService,

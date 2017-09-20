@@ -18,11 +18,11 @@ h6 {
   font-size: 0.69rem;
   letter-spacing: 0.1rem;
 }
-.email-input{
+
+.email-input {
   padding: 10px;
   margin: auto 5px;
   background-color: #fbffef;
-  
 }
 
 img {
@@ -66,11 +66,6 @@ button {
   font-size: 24px;
 }
 
-.card-block {
-  padding: 5px 0;
-  font-size: 15px;
-}
-
 .container ul {
   margin: 0;
   padding: 15px 0;
@@ -80,7 +75,7 @@ button {
 .container ul li {
   display: inline-block;
   list-style-type: none;
-  margin: 12px 12px 12px 12px;
+  margin: 12px;
   text-align: center;
   cursor: pointer;
   color: cornflowerblue;
@@ -90,29 +85,61 @@ button {
   color: #315184;
 }
 
+
+/*cards from this point on*/
+
 .card-group {
   display: flex;
   flex-wrap: wrap;
   margin: auto;
 }
 
-.card {
-  margin: 5px;
-  width: 33.3333333%;
-  padding: .70rem;
-  border: 1px solid aliceblue;
-  min-width: 317px;
-  max-width: 370px;
-}
-.card-blog{
-	cursor: pointer;
+.card-block {
+  padding: 5px 0;
 }
 
-@media screen and (max-width: 900px) {
-  #stage-caption h1 {
-    font-size: 30px;
+.card {
+  width: 33%;
+  padding: .70rem;
+  border: 1px solid aliceblue;
+  min-width: 318px;
+  max-width: 380px;
+}
+
+.card-blog {
+  cursor: pointer;
+}
+
+@media (max-width: 575px) and (min-width:401px) {
+  #stage-content>h1 {
+    font-size: 40px;
   }
-  #stage-caption p {
+  #stage-content>p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  #stage-content>h1 {
+    font-size: 35px;
+  }
+  #stage-content>p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) and (min-width:576px) {
+  #stage-content>h1 {
+    font-size: 45px;
+  }
+  #stage-content>p {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    max-width: 100%;
+    width: 100%;
   }
 }

@@ -1,29 +1,32 @@
 <section>
+  <div *ngIf="getSearch()!=='undefined'">
+    <h6  *ngIf="getSearch()!==''" class="text-muted">Search results found for <q><strong>{{getSearch()}}</strong></q></h6>
+  </div>
+  <div *ngIf="getSearch()===undefined || getSearch()==='undefined' || getSearch()===''">
+    <p class="text-muted">Search not found!</p>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
         <div class="card-group">
           <div class="card" *ngFor="let blog of blogs | search:getSearch()">
             <div [routerLink]="['/blog', blog._id]" class="card-blog">
-                <img [src]="blog.thumbnail" alt="image" id="card-image">
-                <div class="card-block">
-                  <h4 class="card-title">{{blog.title}}</h4>
-                  <p class="card-text">{{blog.summery}}</p>
-                  <div class="d-flex justify-content-between">
-                    <p class="card-text"><small class="text-muted">Posted {{blog.createdAt | date}}</small></p>
-                    <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
-                  </div>
+              <img [src]="blog.thumbnail" alt="image" id="card-image">
+              <div class="card-block">
+                <h4 class="card-title">{{blog.title}}</h4>
+                <p class="card-text">{{blog.summery}}</p>
+                <div class="d-flex justify-content-between">
+                  <p class="card-text"><small class="text-muted">Posted {{blog.createdAt | date}}</small></p>
+                  <p class="card-text"><small class="text-muted">By {{blog.createdBy}}</small></p>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section>
-  <div *ngIf="getSearch()===undefined || getSearch()==='undefined' || getSearch()===''">
-   <p>Search not found!</p>
   </div>
 </section>

@@ -13,15 +13,13 @@
         <li (click)="filterBy= 'all'"><a>All</a></li>
         <li (click)="filterBy= 'education'"><a>Education</a></li>
         <li (click)="filterBy= 'programming'"><a>Programming</a></li>
-        <li (click)="filterBy= 'movies'"><a>Movies</a></li>
+        <li (click)="filterBy= 'movies'"><a>Movies/Shows</a></li>
         <li (click)="filterBy= 'people'"><a>People</a></li>
         <li (click)="filterBy= 'comics'"><a>Comics</a></li>
         <li (click)="filterBy= 'shows'"><a>Shows</a></li>
       </ul>
       <div class="row">
-        <div class="col-sm-12">
           <div class="card-group">
-
             <div class="card" *ngFor="let blog of (blogs | filter:filterBy)">
               <div [routerLink]="['/blog', blog._id]" class="card-blog">
                 <img [src]="blog.thumbnail" alt="sunset" id="card-image">
@@ -38,7 +36,6 @@
             </div>
 
           </div>
-        </div>
       </div>
     </div>
   </div>

@@ -7,7 +7,7 @@ export class SearchPipe implements PipeTransform {
   transform(blogs: any, result: String): any {
 
 
-    if (!blogs || !result || result === "undefined") {
+    if (!blogs || !result || result === "") {
       return;
     }
     return blogs.filter(function (blog) {
