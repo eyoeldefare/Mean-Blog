@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { BlogService } from "../service/blog.service";
 import { ActivatedRoute } from "@angular/router";
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
@@ -8,7 +8,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from "@angular/forms"
   templateUrl: './writeblog.component.html',
   styleUrls: ['./writeblog.component.css']
 })
-export class WriteblogComponent implements OnInit {
+export class WriteblogComponent implements OnInit, OnChanges {
   googledoc: any;
   title: String;
   createdBy: String;
@@ -18,13 +18,15 @@ export class WriteblogComponent implements OnInit {
   comments: String;
   message: String;
   messageClass: String;
-
   constructor(private bs: BlogService, private fb: FormBuilder, private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.commentForm();
   }
+  ngOnChanges() {
 
+  }
   ngOnInit() {
-    this.getEachblogs()
+    this.getEachblogs();
+    this.getOnlyComment()
 
   }
   commentForm() {
@@ -41,13 +43,19 @@ export class WriteblogComponent implements OnInit {
         this.messageClass = 'alert alert-danger';
         this.message = data.message;
         this.form.reset();
+        setTimeout(() => {
+          this.messageClass = '';
+          this.message = '';
+        }, 3000);
       }
       else {
-        this.messageClass = 'alert alert-success';
-        this.message = data.message;
+        this.form.reset();
+        this.getOnlyComment()
         setTimeout(() => {
-          this.form.reset();
-        }, 4000);
+          this.messageClass = '';
+          this.message = '';
+        }, 3000);
+
       }
 
 
@@ -55,7 +63,6 @@ export class WriteblogComponent implements OnInit {
   }
 
   cancel(id) {
-
     this.form.reset();
   }
 
@@ -66,9 +73,14 @@ export class WriteblogComponent implements OnInit {
       this.date = data.blog.createdAt;
       this.title = data.blog.title;
       this.blog_id = data.blog._id;
+    });
+  }
+  getOnlyComment() {
+    this.bs.getEachblogs(this.route.snapshot.params['id']).subscribe(data => {
       this.comments = data.blog.comments;
     });
   }
+
 }
 
 

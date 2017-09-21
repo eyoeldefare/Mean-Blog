@@ -54,5 +54,6 @@ export class BlogService {
   addSearch(data){
     this.searchSubject.next(data);
   }
+ 
 
 }

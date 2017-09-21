@@ -53,18 +53,19 @@ module.exports = (router) => {
                     if (!req.body.tags || !req.body.thumbnail) {
                         res.json({
                             success: false,
-                            message: "Please enter a tag and thumbnail pic"
+                            message: "Please enter a tag or thumbnail pic"
                         })
 
                     } else {
                         const blog = new Blog({
                             title: req.body.title,
                             tags: req.body.tags,
-                            createAt: req.body.createAt,
+                            createdAt: req.body.createdAt,
                             createdBy: req.body.createdBy,
                             summery: req.body.summery,
                             thumbnail: req.body.thumbnail,
-                            googledoc: req.body.googledoc
+                            googledoc: req.body.googledoc,
+
                         });
 
                         blog.save((err) => {

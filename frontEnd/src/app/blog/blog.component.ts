@@ -46,13 +46,15 @@ export class BlogComponent implements OnInit {
     this.auth.loadUser();
     this.username = JSON.parse(this.auth.user);
     this.username = this.username.username;
+    var time = (new Date()).toUTCString();
     const blog = {
       title:this.form.get("title").value,
       tags: this.form.get("tags").value,
       summery: this.form.get("summery").value,
       thumbnail: this.form.get("thumbnail").value,
       googledoc: this.form.get("googledoc").value,
-      createdBy: this.username
+      createdBy: this.username,
+      createdAt: time
 
     }
 
