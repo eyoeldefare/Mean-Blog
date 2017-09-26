@@ -111,10 +111,10 @@ export class RegisterComponent implements OnInit {
   checkEmail() {
     this.as.checkEmail(this.form.get('email').value).subscribe(data => {
       if (!data.success) {
-        this.emailValid = false;
+        this.emailValid = true;
         this.emailMessage = data.message;
       } else {
-        this.emailValid = true;
+        this.emailValid = false;
         this.emailMessage = data.message;
       }
     });
@@ -122,10 +122,10 @@ export class RegisterComponent implements OnInit {
   checkUsername() {
     this.as.checkUsername(this.form.get('username').value).subscribe(data => {
       if (!data.success) {
-        this.usernameValid = false;
+        this.usernameValid = true;
         this.usernameMessage = data.message;
       } else {
-        this.usernameValid = true;
+        this.usernameValid = false;
         this.usernameMessage = data.message;
       }
     });
