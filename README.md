@@ -6,10 +6,16 @@ The technology used to build this application is MEAN stack.
 # Technologies used
 -Angular 4 (Typescript) 
 frontend 
+
+
 -html5/css3/bootstrap 
 view rendering 
+
+
 -nodejs
 backend
+
+
 -Mongodb
 Data-server
 
