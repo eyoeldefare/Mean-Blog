@@ -1,4 +1,5 @@
-# Mean-Blog
+
+# Mean-Blog ------ Please note that this app doesn't use universal rendering.
 Mean blog example.
 This is a personal blog I have made for my online journal to teach what I know about web development online and also talk about the future technologies that I think we will be seeing in the near future. This blog will focus on programming, web development, and AI/Machine Learning. 
 The technology used to build this application is MEAN stack. 
